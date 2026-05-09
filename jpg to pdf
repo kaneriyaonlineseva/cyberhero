@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPG to PDF Converter - PrintPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 py-10">
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+            <h1 class="text-2xl font-bold mb-2">JPG to PDF Converter</h1>
+            <p class="text-gray-500 mb-6">Convert your images to PDF instantly — Free</p>
+            
+            <!-- Upload Area -->
+            <div id="dropzone" class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center cursor-pointer hover:border-indigo-500 transition">
+                <i class="fa-regular fa-image text-4xl text-gray-400 mb-3"></i>
+                <p>Click or drag images here</p>
+                <input type="file" id="fileInput" accept="image/*" multiple class="hidden">
+            </div>
+            
+            <!-- Preview -->
+            <div id="preview" class="grid grid-cols-3 gap-3 mt-6"></div>
+            
+            <!-- Convert Button -->
+            <button id="convertBtn" class="mt-6 w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold hover:bg-indigo-700 transition" disabled>
+                Convert to PDF
+            </button>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/@pdf-lib/core@1.17.1/dist/pdf-lib.min.js"></script>
+    <script>
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+        const convertBtn = document.getElementById('convertBtn');
+        let selectedFiles = [];
+        
+        dropzone.onclick = () => fileInput.click();
+        dropzone.ondragover = (e) => { e.preventDefault(); dropzone.classList.add('border-indigo-500', 'bg-indigo-50'); };
+        dropzone.ondragleave = () => dropzone.classList.remove('border-indigo-500', 'bg-indigo-50');
+        dropzone.ondrop = (e) => { e.preventDefault(); handleFiles(e.dataTransfer.files); };
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+        
+        function handleFiles(files) {
+            selectedFiles = Array.from(files);
+            preview.innerHTML = '';
+            selectedFiles.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'w-full h-24 object-cover rounded-lg shadow';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+            convertBtn.disabled = false;
+        }
+        
+        convertBtn.onclick = async () => {
+            if (!selectedFiles.length) return;
+            convertBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Converting...';
+            const { PDFDocument } = PDFLib;
+            const pdfDoc = await PDFDocument.create();
+            for (const file of selectedFiles) {
+                const reader = new FileReader();
+                const data = await new Promise(resolve => { reader.onload = resolve; reader.readAsDataURL(file); });
+                let image;
+                if (file.type === 'image/jpeg') image = await pdfDoc.embedJpg(reader.result);
+                else image = await pdfDoc.embedPng(reader.result);
+                const page = pdfDoc.addPage([image.width, image.height]);
+                page.drawImage(image, { x: 0, y: 0, width: image.width, height: image.height });
+            }
+            const pdfBytes = await pdfDoc.save();
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url; link.download = 'converted.pdf'; link.click();
+            convertBtn.innerHTML = 'Convert to PDF';
+        };
+    </script>
+</body>
+</html>
