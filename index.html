@@ -2,75 +2,175 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CyberHero – Online Printing, PDF Tools & Passport Photo Maker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberHero Pro - Best Online Printing & PDF Tools</title>
     
-    <!-- Tailwind CSS + Alpine.js -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js for interactivity -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- QR Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
         
-        /* Animated Gradient Background */
-        .animated-gradient-bg {
-            background: linear-gradient(-45deg, #a855f7, #6366f1, #06b6d4, #ec4899);
-            background-size: 400% 400%;
-            animation: gradientFlow 5s ease infinite;
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #f8fafc 100%);
         }
         
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        /* Service Card Hover */
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Animated Gradient Border */
+        .animated-border {
+            position: relative;
+            background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            border-radius: 1rem;
+            padding: 2px;
+        }
+        
+        .animated-border > * {
+            background: white;
+            border-radius: 0.95rem;
+        }
+        
+        /* Premium Card Hover */
         .service-card {
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .service-card:hover::before {
+            left: 100%;
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -12px rgba(99, 102, 241, 0.25);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 40px -20px rgba(99, 102, 241, 0.4);
         }
         
-        /* WhatsApp Floating Button */
-        @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        /* Dark Mode Styles */
+        .dark body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
         
-        .whatsapp-float {
-            animation: pulse-ring 1.5s infinite;
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Pulse Animation for Hot Badge */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        
+        .hot-badge {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #6366f1, #a855f7); border-radius: 10px; }
+        
+        /* Loading Animation */
+        .loader {
+            width: 45px;
+            height: 45px;
+            border: 3px solid #e2e8f0;
+            border-top: 3px solid #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         [x-cloak] { display: none !important; }
+        
+        /* Slide-up Animation */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
     </style>
 </head>
-<body class="bg-slate-50" x-data="{ 
-    mobileMenuOpen: false, 
-    partnerModalOpen: false, 
-    paymentModalOpen: false,
-    loginModalOpen: false,
-    signupModalOpen: false,
+<body x-data="{ 
+    darkMode: false, 
+    mobileMenu: false, 
+    loginModal: false, 
+    partnerModal: false, 
+    paymentModal: false,
+    searchQuery: '',
     isLoggedIn: false,
     userName: '',
+    
+    // Login/Signup
     loginEmail: '',
     loginPassword: '',
     signupName: '',
     signupEmail: '',
     signupMobile: '',
     signupPassword: '',
+    
+    // Partner Registration
     partnerShopName: '',
     partnerOwnerName: '',
     partnerMobile: '',
@@ -78,315 +178,426 @@
     partnerCity: '',
     partnerAddress: '',
     
+    init() {
+        // Check dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            this.darkMode = true;
+            document.documentElement.classList.add('dark');
+        }
+        
+        // GSAP Animations
+        if (typeof gsap !== 'undefined') {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.from('.service-card', {
+                scrollTrigger: { trigger: '.services-section', start: 'top bottom' },
+                y: 50,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.1
+            });
+        }
+    },
+    
+    toggleDarkMode() {
+        this.darkMode = !this.darkMode;
+        localStorage.setItem('darkMode', this.darkMode);
+        if (this.darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    },
+    
     handleLogin() {
-        if(this.loginEmail && this.loginPassword) {
+        if (this.loginEmail && this.loginPassword) {
             this.isLoggedIn = true;
             this.userName = this.loginEmail.split('@')[0];
-            this.loginModalOpen = false;
-            alert('Login successful!');
+            this.loginModal = false;
+            this.showToast('Login successful! Welcome back!', 'success');
+            this.loginEmail = '';
+            this.loginPassword = '';
+        } else {
+            this.showToast('Please enter email and password', 'error');
         }
     },
     
     handleSignup() {
-        if(this.signupName && this.signupEmail && this.signupMobile) {
+        if (this.signupName && this.signupEmail && this.signupMobile && this.signupPassword) {
             this.isLoggedIn = true;
             this.userName = this.signupName;
-            this.signupModalOpen = false;
-            alert('Account created successfully!');
+            this.signupModal = false;
+            this.showToast('Account created successfully!', 'success');
+            this.signupName = this.signupEmail = this.signupMobile = this.signupPassword = '';
+        } else {
+            this.showToast('Please fill all fields', 'error');
         }
     },
     
     registerPartner() {
-        if(this.partnerShopName && this.partnerOwnerName && this.partnerMobile) {
-            alert('Application submitted! We will contact you within 24 hours.');
-            this.partnerModalOpen = false;
+        if (this.partnerShopName && this.partnerOwnerName && this.partnerMobile) {
+            this.showToast('Application submitted! We will contact you within 24 hours.', 'success');
+            this.partnerModal = false;
+            this.partnerShopName = this.partnerOwnerName = this.partnerMobile = this.partnerEmail = this.partnerCity = this.partnerAddress = '';
+        } else {
+            this.showToast('Please fill all required fields', 'error');
         }
     },
     
-    openLogin() { this.loginModalOpen = true; },
-    openSignup() { this.signupModalOpen = true; },
-    openPartner() { this.partnerModalOpen = true; },
-    logout() { this.isLoggedIn = false; this.userName = ''; alert('Logged out!'); }
-}">
+    logout() {
+        this.isLoggedIn = false;
+        this.userName = '';
+        this.showToast('Logged out successfully!', 'success');
+    },
+    
+    showToast(message, type) {
+        const toast = document.createElement('div');
+        const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+        toast.className = `fixed bottom-6 right-6 z-[300] ${bgColor} text-white px-5 py-3 rounded-xl shadow-lg flex items-center gap-2 slide-up`;
+        toast.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${message}`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+}"
+x-init="init()"
+:class="darkMode ? 'dark' : ''"
+class="min-h-screen">
 
     <!-- ============================================ -->
-    <!-- HEADER / NAVBAR (AkPrintHub Style) -->
+    <!-- PREMIUM HEADER WITH GLASS EFFECT -->
     <!-- ============================================ -->
-    <header class="bg-white border-b sticky top-0 z-[60] shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            
+    <header :class="darkMode ? 'glass-dark' : 'glass'" class="sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
             <!-- Logo -->
-            <a href="/" class="flex items-center gap-2">
-                <div class="w-9 h-9 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center shadow-md">
-                    <i class="fa-solid fa-print text-white text-sm"></i>
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-print text-white text-lg"></i>
                 </div>
                 <div>
-                    <span class="text-xl font-bold text-gray-800">Cyber<span class="text-indigo-600">Hero</span></span>
-                    <span class="text-[10px] font-bold text-gray-400 block -mt-1">by You</span>
+                    <span class="text-xl font-extrabold text-gray-800 dark:text-white">Cyber<span class="gradient-text">Hero</span></span>
+                    <span class="text-[9px] font-bold text-gray-400 block -mt-0.5">Premium Digital Services</span>
                 </div>
             </a>
 
             <!-- Desktop Navigation -->
-            <nav class="hidden md:flex gap-6 text-sm font-semibold text-gray-600 items-center">
-                <a href="/" class="hover:text-indigo-600 text-indigo-600">Home</a>
-                
-                <!-- Services Dropdown -->
-                <div class="relative group">
-                    <button class="flex items-center gap-1 hover:text-indigo-600">
-                        Services <i class="fa-solid fa-angle-down text-xs"></i>
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="#" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
+                <div x-data="{ open: false }" class="relative">
+                    <button @click="open = !open" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition flex items-center gap-1">
+                        Services <i class="fa-solid fa-chevron-down text-xs" :class="open ? 'rotate-180' : ''"></i>
                     </button>
-                    <div class="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                        <a href="/jpg-to-pdf.html" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50"><i class="fa-solid fa-file-pdf text-red-500"></i> JPG to PDF</a>
-                        <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50"><i class="fa-regular fa-id-card text-indigo-500"></i> Passport Photo</a>
-                        <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50"><i class="fa-solid fa-object-group text-green-500"></i> Merge PDF</a>
-                        <a href="#" class="flex items-center gap-3 px-4 py-3 hover:bg-gray-50"><i class="fa-regular fa-credit-card text-purple-500"></i> ID Card Print</a>
+                    <div x-show="open" @click.away="open = false" x-transition class="absolute top-full left-0 mt-3 w-72 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border dark:border-slate-700 overflow-hidden z-50">
+                        <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-indigo-50 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-file-pdf text-red-500"></i><span>JPG to PDF</span></a>
+                        <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-indigo-50 dark:hover:bg-slate-700 transition"><i class="fa-regular fa-id-card text-indigo-500"></i><span>Passport Photo</span></a>
+                        <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-indigo-50 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-object-group text-green-500"></i><span>Merge PDF</span></a>
+                        <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-indigo-50 dark:hover:bg-slate-700 transition"><i class="fa-regular fa-credit-card text-purple-500"></i><span>ID Card Print</span></a>
                     </div>
                 </div>
-                
-                <a href="#" class="hover:text-indigo-600">Latest Jobs</a>
-                <a href="#" class="hover:text-indigo-600">Pricing</a>
+                <a href="#" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Latest Jobs</a>
+                <a href="#" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Pricing</a>
             </nav>
 
-            <!-- Right Section -->
-            <div class="flex items-center gap-2 md:gap-3">
+            <!-- Right Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Dark Mode Toggle -->
+                <button @click="toggleDarkMode" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-slate-700 hover:scale-110 transition flex items-center justify-center">
+                    <i class="fa-solid text-lg" :class="darkMode ? 'fa-sun text-yellow-400' : 'fa-moon text-gray-600'"></i>
+                </button>
+                
                 <!-- QR Button -->
-                <button @click="paymentModalOpen = true" class="w-9 h-9 rounded-full bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition">
+                <button @click="paymentModal = true" class="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:scale-110 transition shadow-md">
                     <i class="fa-solid fa-qrcode"></i>
                 </button>
                 
-                <!-- Login/User Menu -->
-                <div class="relative">
-                    <template x-if="!isLoggedIn">
-                        <button @click="openLogin()" class="hidden md:flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-full text-sm font-semibold">
-                            <i class="fa-regular fa-user"></i> Login
-                        </button>
-                    </template>
-                    <template x-if="isLoggedIn">
-                        <div class="flex items-center gap-2 bg-indigo-50 px-3 py-1.5 rounded-full">
-                            <i class="fa-regular fa-circle-user text-indigo-600"></i>
-                            <span class="text-sm font-semibold text-gray-700" x-text="userName"></span>
-                        </div>
-                    </template>
-                </div>
+                <!-- Login / User Menu -->
+                <template x-if="!isLoggedIn">
+                    <button @click="loginModal = true" class="hidden md:flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold hover:shadow-lg transition hover:scale-105">
+                        <i class="fa-regular fa-user"></i> Login
+                    </button>
+                </template>
+                <template x-if="isLoggedIn">
+                    <div class="hidden md:flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-full">
+                        <i class="fa-regular fa-circle-user text-indigo-600 dark:text-indigo-400 text-xl"></i>
+                        <span class="font-semibold text-gray-700 dark:text-gray-300" x-text="userName"></span>
+                        <button @click="logout" class="text-red-500 hover:text-red-600 text-sm ml-2">Logout</button>
+                    </div>
+                </template>
                 
                 <!-- Partner Button -->
-                <button @click="openPartner()" class="hidden md:flex items-center gap-1 bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1.5 rounded-full text-xs font-bold hover:scale-105 transition">
-                    <i class="fa-solid fa-store"></i> Cyber Cafe?
+                <button @click="partnerModal = true" class="hidden md:flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-bold hover:scale-105 transition shadow-md">
+                    <i class="fa-solid fa-store"></i> Cyber Cafe
                 </button>
                 
                 <!-- Mobile Menu Toggle -->
-                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">
-                    <i class="fa-solid" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+                <button @click="mobileMenu = !mobileMenu" class="lg:hidden w-10 h-10 rounded-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center">
+                    <i class="fa-solid text-lg" :class="mobileMenu ? 'fa-times' : 'fa-bars'"></i>
                 </button>
             </div>
         </div>
         
         <!-- Mobile Menu -->
-        <div x-show="mobileMenuOpen" x-cloak class="md:hidden bg-white border-t p-4 space-y-3">
-            <a href="/" class="block py-2 text-indigo-600 font-semibold">Home</a>
-            <a href="#" class="block py-2">Services</a>
-            <a href="#" class="block py-2">Latest Jobs</a>
-            <a href="#" class="block py-2">Pricing</a>
-            <hr>
-            <button @click="openLogin()" class="w-full py-2 text-center bg-indigo-600 text-white rounded-lg font-semibold">Login</button>
-            <button @click="openPartner()" class="w-full py-2 text-center bg-orange-500 text-white rounded-lg font-semibold">Cyber Cafe Partner</button>
+        <div x-show="mobileMenu" x-cloak class="lg:hidden bg-white dark:bg-slate-800 border-t dark:border-slate-700 p-5 space-y-3 shadow-lg">
+            <a href="#" class="block py-2 font-semibold text-gray-700 dark:text-gray-300">Home</a>
+            <a href="#" class="block py-2 font-semibold text-gray-700 dark:text-gray-300">Services</a>
+            <a href="#" class="block py-2 font-semibold text-gray-700 dark:text-gray-300">Latest Jobs</a>
+            <a href="#" class="block py-2 font-semibold text-gray-700 dark:text-gray-300">Pricing</a>
+            <hr class="dark:border-slate-700">
+            <button @click="loginModal = true; mobileMenu = false" class="w-full py-2 bg-indigo-600 text-white rounded-xl font-semibold">Login</button>
+            <button @click="partnerModal = true; mobileMenu = false" class="w-full py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl font-semibold">Cyber Cafe Partner</button>
         </div>
     </header>
 
     <!-- ============================================ -->
-    <!-- HERO SECTION (AkPrintHub Style) -->
+    <!-- HERO SECTION - PREMIUM DESIGN -->
     <!-- ============================================ -->
-    <div class="relative overflow-hidden mb-8 p-8 rounded-2xl animated-gradient-bg text-white">
-        <div class="relative z-10 text-center">
-            <h1 class="text-2xl md:text-4xl font-extrabold mb-3">Launch your digital operations with CyberHero</h1>
-            <p class="text-sm md:text-base opacity-90">Your all-in-one platform for seamless online printing and digital services.</p>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SEARCH BAR -->
-    <!-- ============================================ -->
-    <div class="max-w-2xl mx-auto px-4 mb-10">
-        <input type="text" id="searchInput" placeholder="Search services, forms, files... (e.g. JPG to PDF, Passport)"
-               class="w-full p-4 pl-5 rounded-2xl border shadow-lg focus:ring-2 focus:ring-indigo-400 outline-none">
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SERVICES GRID (Dynamic) -->
-    <!-- ============================================ -->
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="flex items-center gap-2 mb-4">
-            <div class="w-1 h-6 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full"></div>
-            <h2 class="text-xl font-bold text-slate-800">Essential Services</h2>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="servicesGrid">
-            <!-- JS will populate -->
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- CYBER CAFE PARTNER SECTION (AkPrintHub Style) -->
-    <!-- ============================================ -->
-    <div class="max-w-7xl mx-auto px-4 mt-12">
-        <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="text-center md:text-left">
-                <div class="inline-flex items-center gap-2 bg-orange-100 px-3 py-1 rounded-full mb-3">
-                    <i class="fa-solid fa-store text-orange-600"></i>
-                    <span class="text-orange-600 font-semibold text-xs">Partner Program</span>
-                </div>
-                <h2 class="text-2xl font-bold">Cyber Cafe Partner</h2>
-                <p class="text-gray-600 text-sm mt-1">Grow your Business</p>
-                <button @click="openPartner()" class="mt-4 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold hover:shadow-lg transition">
-                    Apply Now - 2 Months Free
-                </button>
+    <section class="relative overflow-hidden py-16 lg:py-24">
+        <!-- Background Decor -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 text-center relative">
+            <div class="inline-flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm px-5 py-2 rounded-full shadow-sm mb-6">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">Trusted by 10,000+ users</span>
             </div>
-            <div class="flex gap-4">
-                <div class="bg-white p-4 rounded-xl shadow text-center">
-                    <i class="fa-solid fa-store text-blue-600 text-2xl"></i>
-                    <p class="text-xs font-bold mt-1">Free Shop Promotion</p>
-                </div>
-                <div class="bg-white p-4 rounded-xl shadow text-center">
-                    <i class="fa-brands fa-whatsapp text-green-600 text-2xl"></i>
-                    <p class="text-xs font-bold mt-1">Direct Customer Chat</p>
+            
+            <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight">
+                <span class="text-gray-900 dark:text-white">Launch Your Digital</span><br>
+                <span class="gradient-text">Operations With CyberHero</span>
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
+                Your all-in-one platform for seamless online printing, PDF tools, passport photo maker, and digital services.
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-xl mx-auto">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition"></div>
+                    <div class="relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center p-2">
+                        <i class="fa-solid fa-search text-gray-400 ml-4"></i>
+                        <input type="text" x-model="searchQuery" placeholder="Search services, forms, files... (e.g. Aadhaar, PDF, Passport)"
+                               class="flex-1 p-3 outline-none bg-transparent dark:text-white">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- ============================================ -->
-    <!-- FOOTER -->
+    <!-- SERVICES GRID SECTION -->
     <!-- ============================================ -->
-    <footer class="bg-slate-900 text-slate-400 mt-16 py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p>© 2024 CyberHero. Made with <i class="fa-solid fa-heart text-red-500"></i> in India</p>
+    <section class="services-section py-12 lg:py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-1 h-8 bg-gradient-to-b from-indigo-500 to-purple-600 rounded-full"></div>
+                <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Essential & <span class="gradient-text">Services</span></h2>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5" id="servicesGrid">
+                <!-- Services loaded dynamically -->
+            </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CYBER CAFE PARTNER SECTION - PREMIUM -->
+    <!-- ============================================ -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full -ml-32 -mb-32"></div>
+                
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+                    <div class="text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4">
+                            <i class="fa-solid fa-store text-sm"></i>
+                            <span class="text-sm font-semibold">Partner Program</span>
+                        </div>
+                        <h2 class="text-3xl lg:text-4xl font-bold mb-3">Cyber Cafe Partner</h2>
+                        <p class="text-orange-100 mb-5">Grow your Business with CyberHero</p>
+                        <button @click="partnerModal = true" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:shadow-xl transition transform hover:scale-105">
+                            <i class="fa-solid fa-store mr-2"></i> Apply Now - 2 Months Free
+                        </button>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-5 text-center hover:scale-105 transition">
+                            <i class="fa-solid fa-store text-3xl mb-2"></i>
+                            <p class="text-sm font-bold">Free Shop Promotion</p>
+                            <p class="text-xs text-orange-100 mt-1">Your Shop Name on Website</p>
+                        </div>
+                        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-5 text-center hover:scale-105 transition">
+                            <i class="fa-brands fa-whatsapp text-3xl mb-2"></i>
+                            <p class="text-sm font-bold">Direct Customer Chat</p>
+                            <p class="text-xs text-orange-100 mt-1">Students contact you</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ============================================ -->
     <!-- LOGIN MODAL -->
     <!-- ============================================ -->
-    <div x-show="loginModalOpen" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6">
-            <div class="text-center mb-4">
-                <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                    <i class="fa-regular fa-user text-white text-2xl"></i>
+    <div x-show="loginModal" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-8 relative animate-fade-in-up">
+            <button @click="loginModal = false" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">✕</button>
+            <div class="text-center mb-6">
+                <div class="w-20 h-20 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <i class="fa-regular fa-user text-white text-3xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold">Welcome Back!</h3>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Welcome Back!</h3>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Login to your account</p>
             </div>
-            <input type="email" x-model="loginEmail" placeholder="Email" class="w-full p-3 border rounded-xl mb-3">
-            <input type="password" x-model="loginPassword" placeholder="Password" class="w-full p-3 border rounded-xl mb-4">
-            <button @click="handleLogin()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-semibold">Login</button>
-            <p class="text-center text-sm mt-4">Don't have account? <a href="#" @click="loginModalOpen=false; openSignup()" class="text-indigo-600">Sign Up</a></p>
-            <button @click="loginModalOpen=false" class="absolute top-3 right-3 text-gray-400">✕</button>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- SIGNUP MODAL -->
-    <!-- ============================================ -->
-    <div x-show="signupModalOpen" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6">
-            <h3 class="text-2xl font-bold text-center mb-4">Create Account</h3>
-            <input type="text" x-model="signupName" placeholder="Full Name" class="w-full p-3 border rounded-xl mb-3">
-            <input type="email" x-model="signupEmail" placeholder="Email" class="w-full p-3 border rounded-xl mb-3">
-            <input type="tel" x-model="signupMobile" placeholder="Mobile Number" class="w-full p-3 border rounded-xl mb-3">
-            <input type="password" x-model="signupPassword" placeholder="Password" class="w-full p-3 border rounded-xl mb-4">
-            <button @click="handleSignup()" class="w-full bg-green-600 text-white py-3 rounded-xl font-semibold">Sign Up</button>
-            <button @click="signupModalOpen=false" class="absolute top-3 right-3 text-gray-400">✕</button>
+            <input type="email" x-model="loginEmail" placeholder="Email Address" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-400">
+            <input type="password" x-model="loginPassword" placeholder="Password" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-5 bg-gray-50 dark:bg-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-400">
+            <button @click="handleLogin" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition">Login</button>
+            <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+                Don't have account? 
+                <a href="#" class="text-indigo-600 font-semibold">Sign Up</a>
+            </p>
         </div>
     </div>
 
     <!-- ============================================ -->
     <!-- PARTNER MODAL -->
     <!-- ============================================ -->
-    <div x-show="partnerModalOpen" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto">
-            <div class="bg-gradient-to-r from-orange-500 to-red-500 -mx-6 -mt-6 p-4 text-center text-white rounded-t-2xl mb-4">
+    <div x-show="partnerModal" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto">
+            <button @click="partnerModal = false" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">✕</button>
+            <div class="bg-gradient-to-r from-orange-500 to-red-600 -mt-6 -mx-6 p-5 text-center text-white rounded-t-3xl mb-5">
+                <i class="fa-solid fa-store text-3xl mb-2"></i>
                 <h3 class="text-xl font-bold">Cyber Cafe Partner Registration</h3>
-                <p class="text-sm">2 Months Free Trial</p>
+                <p class="text-sm text-orange-100">2 Months Free Trial</p>
             </div>
-            <input type="text" x-model="partnerShopName" placeholder="Shop/Cyber Cafe Name" class="w-full p-3 border rounded-xl mb-3">
-            <input type="text" x-model="partnerOwnerName" placeholder="Owner Name" class="w-full p-3 border rounded-xl mb-3">
-            <input type="tel" x-model="partnerMobile" placeholder="Mobile Number" class="w-full p-3 border rounded-xl mb-3">
-            <input type="email" x-model="partnerEmail" placeholder="Email" class="w-full p-3 border rounded-xl mb-3">
-            <input type="text" x-model="partnerCity" placeholder="City" class="w-full p-3 border rounded-xl mb-3">
-            <textarea x-model="partnerAddress" placeholder="Full Address" rows="3" class="w-full p-3 border rounded-xl mb-4"></textarea>
-            <button @click="registerPartner()" class="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-xl font-semibold">Submit Application</button>
-            <button @click="partnerModalOpen=false" class="absolute top-3 right-3 text-gray-500">✕</button>
+            <input type="text" x-model="partnerShopName" placeholder="Shop/Cyber Cafe Name" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
+            <input type="text" x-model="partnerOwnerName" placeholder="Owner Name" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
+            <input type="tel" x-model="partnerMobile" placeholder="Mobile Number" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
+            <input type="email" x-model="partnerEmail" placeholder="Email (Optional)" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
+            <input type="text" x-model="partnerCity" placeholder="City/District" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
+            <textarea x-model="partnerAddress" placeholder="Full Address with PIN Code" rows="3" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-5 bg-gray-50 dark:bg-slate-900 dark:text-white"></textarea>
+            <button @click="registerPartner" class="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition">Submit Application</button>
         </div>
     </div>
 
     <!-- ============================================ -->
     <!-- PAYMENT QR MODAL -->
     <!-- ============================================ -->
-    <div x-show="paymentModalOpen" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl max-w-sm w-full p-6 text-center">
-            <h3 class="font-bold text-lg mb-3">Scan to Pay</h3>
-            <div class="bg-gray-100 p-4 rounded-xl mb-4 flex justify-center">
-                <canvas id="qrCanvas" width="180" height="180"></canvas>
+    <div x-show="paymentModal" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-sm w-full p-6 text-center">
+            <h3 class="font-bold text-xl text-gray-900 dark:text-white mb-3">Scan to Pay</h3>
+            <div class="bg-gray-100 dark:bg-slate-700 p-4 rounded-2xl mb-4 flex justify-center">
+                <canvas id="qrCanvas" width="180" height="180" class="w-44 h-44"></canvas>
             </div>
-            <p class="text-sm text-gray-500 mb-3">UPI: <span class="font-mono">cyberhero@ybl</span></p>
-            <button @click="paymentModalOpen=false" class="w-full py-2 bg-gray-200 rounded-lg">Close</button>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">UPI ID: <span class="font-mono text-indigo-600">cyberhero@ybl</span></p>
+            <button @click="paymentModal = false" class="w-full py-2 bg-gray-200 dark:bg-slate-700 rounded-xl font-semibold hover:bg-gray-300 transition">Close</button>
         </div>
     </div>
 
     <!-- ============================================ -->
     <!-- FLOATING WHATSAPP BUTTON -->
     <!-- ============================================ -->
-    <a href="https://wa.me/916377523634?text=Hi" target="_blank" class="whatsapp-float fixed bottom-6 right-5 z-[90] bg-[#25D366] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition">
-        <i class="fa-brands fa-whatsapp text-2xl"></i>
+    <a href="https://wa.me/916377523634?text=Hi%20I%20need%20help" target="_blank" class="fixed bottom-6 right-6 z-[90] group">
+        <div class="relative">
+            <div class="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
+            <div class="relative bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
+                <i class="fa-brands fa-whatsapp text-2xl"></i>
+            </div>
+        </div>
     </a>
 
     <!-- ============================================ -->
-    <!-- SCRIPTS -->
+    <!-- FOOTER -->
     <!-- ============================================ -->
-    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <footer class="bg-gray-900 text-gray-400 mt-16 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center gap-8 mb-6">
+                <a href="#" class="hover:text-white transition">About Us</a>
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms & Conditions</a>
+                <a href="#" class="hover:text-white transition">Contact</a>
+            </div>
+            <p>© 2024 CyberHero. Made with <i class="fa-solid fa-heart text-red-500 animate-pulse"></i> in India</p>
+        </div>
+    </footer>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Services Data
-            const services = [
-                { name: "JPG to PDF", icon: "fa-solid fa-file-pdf", color: "red", desc: "Convert images to PDF" },
-                { name: "Passport Photo", icon: "fa-regular fa-id-card", color: "indigo", desc: "Make passport size photos" },
-                { name: "Merge PDF", icon: "fa-solid fa-object-group", color: "green", desc: "Combine multiple PDFs" },
-                { name: "ID Card Print", icon: "fa-regular fa-credit-card", color: "purple", desc: "Print ID cards" },
-                { name: "PDF to JPG", icon: "fa-regular fa-image", color: "blue", desc: "Extract images" },
-                { name: "Compress PDF", icon: "fa-solid fa-compress", color: "yellow", desc: "Reduce file size" }
-            ];
-            
-            const grid = document.getElementById('servicesGrid');
-            if (grid) {
-                services.forEach(s => {
-                    const card = document.createElement('div');
-                    card.className = 'service-card bg-white rounded-2xl p-4 text-center shadow-sm border';
-                    card.innerHTML = `
-                        <div class="w-12 h-12 rounded-xl bg-${s.color}-100 text-${s.color}-600 flex items-center justify-center mx-auto mb-2">
-                            <i class="${s.icon} text-xl"></i>
+        // Services Data
+        const servicesData = [
+            { name: "Latest Jobs", icon: "fa-solid fa-briefcase", bg: "from-blue-500 to-cyan-500", badge: "NEW", badgeColor: "bg-blue-500", desc: "Sarkari Naukri Updates" },
+            { name: "Mock Test", icon: "fa-solid fa-clipboard-list", bg: "from-red-500 to-orange-500", badge: "NEW", badgeColor: "bg-red-500", desc: "Practice for Exams" },
+            { name: "ID Card Print", icon: "fa-regular fa-credit-card", bg: "from-purple-500 to-pink-500", badge: "NEW", badgeColor: "bg-purple-500", desc: "Professional ID Cards" },
+            { name: "Passport Photo", icon: "fa-regular fa-id-card", bg: "from-indigo-500 to-purple-600", badge: null, desc: "Passport Size Photos" },
+            { name: "Photo Crop Resize", icon: "fa-solid fa-crop", bg: "from-teal-500 to-emerald-500", badge: null, desc: "Edit Photos" },
+            { name: "Resume/CV", icon: "fa-regular fa-file-lines", bg: "from-pink-500 to-rose-500", badge: null, desc: "Professional Resume" },
+            { name: "PPT/Profile", icon: "fa-solid fa-presentation", bg: "from-amber-500 to-yellow-500", badge: "NEW", badgeColor: "bg-amber-500", desc: "PowerPoint Templates" },
+            { name: "NSDL PAAM ID", icon: "fa-solid fa-id-card-clip", bg: "from-slate-500 to-gray-500", badge: "HOT", badgeColor: "bg-red-600 hot-badge", desc: "Agency ID Purchase" },
+            { name: "Payment Locked QR", icon: "fa-solid fa-qrcode", bg: "from-green-500 to-emerald-500", badge: "HOT", badgeColor: "bg-red-600 hot-badge", desc: "Scan to Pay" },
+            { name: "JPG to PDF", icon: "fa-solid fa-file-pdf", bg: "from-red-500 to-orange-500", badge: null, desc: "Convert Images to PDF" },
+            { name: "Merge PDF", icon: "fa-solid fa-object-group", bg: "from-green-500 to-teal-500", badge: null, desc: "Combine PDF Files" },
+            { name: "PDF to JPG", icon: "fa-regular fa-image", bg: "from-blue-500 to-indigo-500", badge: null, desc: "Extract Images" }
+        ];
+
+        // Load Services into Grid
+        const grid = document.getElementById('servicesGrid');
+        if (grid) {
+            servicesData.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-md hover:shadow-xl';
+                card.innerHTML = `
+                    <div class="relative">
+                        ${service.badge ? `<span class="absolute -top-2 -right-2 px-2 py-0.5 text-[10px] font-bold rounded-full ${service.badgeColor} text-white uppercase shadow-md">${service.badge}</span>` : ''}
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br ${service.bg} flex items-center justify-center mx-auto mb-3 shadow-md">
+                            <i class="${service.icon} text-white text-xl"></i>
                         </div>
-                        <h3 class="font-bold text-gray-800 text-sm">${s.name}</h3>
-                        <p class="text-xs text-gray-500">${s.desc}</p>
-                    `;
-                    grid.appendChild(card);
+                        <h3 class="font-bold text-gray-800 dark:text-white text-center text-sm mb-1">${service.name}</h3>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 text-center">${service.desc}</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Search Filter
+        const searchInput = document.querySelector('input[x-model="searchQuery"]');
+        if (searchInput) {
+            const handleSearch = () => {
+                const query = window.app?.searchQuery?.toLowerCase() || '';
+                document.querySelectorAll('.service-card').forEach((card, i) => {
+                    const title = card.querySelector('h3')?.innerText.toLowerCase() || '';
+                    if (title.includes(query)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
                 });
-            }
+            };
             
-            // Search functionality
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    const query = e.target.value.toLowerCase();
-                    document.querySelectorAll('.service-card').forEach(card => {
-                        const title = card.querySelector('h3')?.innerText.toLowerCase() || '';
-                        card.style.display = title.includes(query) ? 'block' : 'none';
-                    });
-                });
-            }
-            
-            // QR Generation
-            const canvas = document.getElementById('qrCanvas');
-            if (canvas && typeof QRious !== 'undefined') {
-                new QRious({ element: canvas, value: 'upi://pay?pa=cyberhero@ybl&pn=CyberHero&cu=INR', size: 180 });
-            }
-        });
+            // Watch for changes
+            setInterval(handleSearch, 100);
+        }
+
+        // QR Generation
+        const qrCanvas = document.getElementById('qrCanvas');
+        if (qrCanvas && typeof QRious !== 'undefined') {
+            new QRious({
+                element: qrCanvas,
+                value: 'upi://pay?pa=cyberhero@ybl&pn=CyberHero&cu=INR',
+                size: 180,
+                level: 'H'
+            });
+        }
     </script>
+    
+    <style>
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.3s ease-out;
+        }
+    </style>
 </body>
 </html>
