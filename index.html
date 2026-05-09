@@ -61,27 +61,7 @@
         gtag('config', 'G-GSRCEFSM15');
     </script>
     
-  <!-- Domain Lock Script (Modified for Local Testing) -->
-<script>
-    (function() {
-        var authorizedDomain = "akprinthub.com";
-        var hostname = window.location.hostname;
-        var isLocal = hostname === 'localhost' || 
-                      hostname === '127.0.0.1' || 
-                      hostname === '' ||
-                      hostname.includes('.local') ||
-                      hostname.includes('.vercel.app') ||
-                      hostname.includes('.netlify.app') ||
-                      hostname.includes('github.io') ||
-                      hostname.startsWith('file://');
-        
-        if (!isLocal && hostname !== authorizedDomain) {
-            document.documentElement.innerHTML = "<div style='display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:red;font-size:20px;font-family:sans-serif;'><b>Security Alert:</b> This domain is not authorized to run this software.</div>";
-        } else if (isLocal) {
-            console.log("Running in local development mode - domain check bypassed");
-        }
-    })();
-</script>
+ 
     
     <style>
         /* Base Styles */
