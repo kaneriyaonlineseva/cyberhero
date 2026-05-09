@@ -2,601 +2,478 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberHero Pro - Best Online Printing & PDF Tools</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="p:domain_verify" content="64aa41ffdd5444bc41e0e2560f2ebdee"/>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- CYEBEHERO BRANDING -->
+    <title>CYEBEHERO - BY TEJSINGH KANERIYA | Online Printing, PDF Tools & Passport Photo Maker</title>
+    <meta name="description" content="CYEBEHERO by TEJSINGH KANERIYA is a free online platform for PDF conversion, passport size photo maker, resume builder, and ID card print tools. Fast, secure and easy-to-use digital services for students, shops and professionals across India.">
+    <meta name="keywords" content="CYEBEHERO, Tejsingh Kaneriya, Free Online Tools, AI Photo Editor, JPG to PDF Online, PDF Converter, Passport Size Photo Maker, ID Card Print, Online Resume Maker">
     
-    <!-- Alpine.js for interactivity -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Canonical & Alternate Links -->
+    <link rel="canonical" href="https://akprinthub.com/en/">
+    <link rel="alternate" hreflang="en" href="https://akprinthub.com/en/">
+    <link rel="alternate" hreflang="hi" href="https://akprinthub.com/hi/">
+    <link rel="alternate" hreflang="x-default" href="https://akprinthub.com/en/">
     
-    <!-- GSAP for animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#6366f1">
+    <meta name="theme-color" content="#ffffff">
     
-    <!-- Font Awesome -->
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="CYEBEHERO - BY TEJSINGH KANERIYA – Online Printing, PDF Tools & Passport Photo Maker">
+    <meta property="og:description" content="CYEBEHERO by TEJSINGH KANERIYA is a free online platform for PDF conversion, passport size photo maker, resume builder, and ID card print tools.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://akprinthub.com/en/">
+    <meta property="og:image" content="https://akprinthub.com/android-chrome-512x512.png">
+    <meta property="og:site_name" content="CYEBEHERO">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CYEBEHERO - BY TEJSINGH KANERIYA">
+    <meta name="twitter:description" content="Free online platform for PDF conversion, passport photo maker, and ID card print tools.">
+    <meta name="twitter:image" content="https://akprinthub.com/android-chrome-512x512.png">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Fonts via CSS (replacing problematic cf-fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@400;600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- QR Library -->
-    <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSRCEFSM15"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-GSRCEFSM15');
+    </script>
+    
+  <!-- Domain Lock Script (Modified for Local Testing) -->
+<script>
+    (function() {
+        var authorizedDomain = "akprinthub.com";
+        var hostname = window.location.hostname;
+        var isLocal = hostname === 'localhost' || 
+                      hostname === '127.0.0.1' || 
+                      hostname === '' ||
+                      hostname.includes('.local') ||
+                      hostname.includes('.vercel.app') ||
+                      hostname.includes('.netlify.app') ||
+                      hostname.includes('github.io') ||
+                      hostname.startsWith('file://');
+        
+        if (!isLocal && hostname !== authorizedDomain) {
+            document.documentElement.innerHTML = "<div style='display:flex;justify-content:center;align-items:center;height:100vh;background:#000;color:red;font-size:20px;font-family:sans-serif;'><b>Security Alert:</b> This domain is not authorized to run this software.</div>";
+        } else if (isLocal) {
+            console.log("Running in local development mode - domain check bypassed");
+        }
+    })();
+</script>
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        /* Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Lexend', sans-serif; }
         
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #f8fafc 100%);
-        }
-        
-        /* Glassmorphism Effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .glass-dark {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        /* Animated Gradient Border */
-        .animated-border {
-            position: relative;
-            background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
-            border-radius: 1rem;
-            padding: 2px;
-        }
-        
-        .animated-border > * {
-            background: white;
-            border-radius: 0.95rem;
-        }
-        
-        /* Premium Card Hover */
-        .service-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .service-card:hover::before {
-            left: 100%;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 40px -20px rgba(99, 102, 241, 0.4);
-        }
-        
-        /* Dark Mode Styles */
-        .dark body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-        
-        /* Floating Animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        .float-animation {
-            animation: float 4s ease-in-out infinite;
-        }
-        
-        /* Pulse Animation for Hot Badge */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
-        }
-        
-        .hot-badge {
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #6366f1, #a855f7); border-radius: 10px; }
-        
-        /* Loading Animation */
-        .loader {
-            width: 45px;
-            height: 45px;
-            border: 3px solid #e2e8f0;
-            border-top: 3px solid #6366f1;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        [x-cloak] { display: none !important; }
-        
-        /* Slide-up Animation */
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+        /* Custom Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
         
-        .slide-up {
-            animation: slideUp 0.5s ease-out;
+        .animate-fade-in-down { animation: fadeInDown 0.7s ease-out; }
+        .animate-gradient-flow { background: linear-gradient(-45deg, #a855f7, #6366f1, #22d3ee, #ec4899); background-size: 400% 400%; animation: gradientFlow 5s ease infinite; }
+        .animate-pop-in { animation: popIn 0.2s ease-out; }
+        .animate-slide-up { animation: slideUp 0.3s ease-out; }
+        
+        /* Service Card Styles */
+        .service-card {
+            transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .service-card:active { transform: scale(0.96); }
+        @media (min-width: 1024px) {
+            .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1); }
+        }
+        
+        /* App Grid */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        @media (min-width: 640px) {
+            .app-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+        }
+        @media (min-width: 1024px) {
+            .app-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; }
+        }
+        
+        /* Scrollbar Hide */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Modal Animation */
+        .modal-enter { opacity: 0; transform: scale(0.95); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: all 0.2s ease-out; }
+        .modal-exit { opacity: 1; transform: scale(1); }
+        .modal-exit-active { opacity: 0; transform: scale(0.95); transition: all 0.15s ease-in; }
+        
+        /* WhatsApp Button Pulse */
+        @keyframes whatsappRing {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+        .whatsapp-ring { animation: whatsappRing 2s infinite; }
+        
+        /* Utility Classes */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
     </style>
 </head>
-<body x-data="{ 
-    darkMode: false, 
-    mobileMenu: false, 
-    loginModal: false, 
-    partnerModal: false, 
-    paymentModal: false,
-    searchQuery: '',
-    isLoggedIn: false,
-    userName: '',
-    
-    // Login/Signup
-    loginEmail: '',
-    loginPassword: '',
-    signupName: '',
-    signupEmail: '',
-    signupMobile: '',
-    signupPassword: '',
-    
-    // Partner Registration
-    partnerShopName: '',
-    partnerOwnerName: '',
-    partnerMobile: '',
-    partnerEmail: '',
-    partnerCity: '',
-    partnerAddress: '',
-    
-    init() {
-        // Check dark mode preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            this.darkMode = true;
-            document.documentElement.classList.add('dark');
-        }
-        
-        // GSAP Animations
-        if (typeof gsap !== 'undefined') {
-            gsap.registerPlugin(ScrollTrigger);
-            gsap.from('.service-card', {
-                scrollTrigger: { trigger: '.services-section', start: 'top bottom' },
-                y: 50,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.1
-            });
-        }
-    },
-    
-    toggleDarkMode() {
-        this.darkMode = !this.darkMode;
-        localStorage.setItem('darkMode', this.darkMode);
-        if (this.darkMode) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    },
-    
-    handleLogin() {
-        if (this.loginEmail && this.loginPassword) {
-            this.isLoggedIn = true;
-            this.userName = this.loginEmail.split('@')[0];
-            this.loginModal = false;
-            this.showToast('Login successful! Welcome back!', 'success');
-            this.loginEmail = '';
-            this.loginPassword = '';
-        } else {
-            this.showToast('Please enter email and password', 'error');
-        }
-    },
-    
-    handleSignup() {
-        if (this.signupName && this.signupEmail && this.signupMobile && this.signupPassword) {
-            this.isLoggedIn = true;
-            this.userName = this.signupName;
-            this.signupModal = false;
-            this.showToast('Account created successfully!', 'success');
-            this.signupName = this.signupEmail = this.signupMobile = this.signupPassword = '';
-        } else {
-            this.showToast('Please fill all fields', 'error');
-        }
-    },
-    
-    registerPartner() {
-        if (this.partnerShopName && this.partnerOwnerName && this.partnerMobile) {
-            this.showToast('Application submitted! We will contact you within 24 hours.', 'success');
-            this.partnerModal = false;
-            this.partnerShopName = this.partnerOwnerName = this.partnerMobile = this.partnerEmail = this.partnerCity = this.partnerAddress = '';
-        } else {
-            this.showToast('Please fill all required fields', 'error');
-        }
-    },
-    
-    logout() {
-        this.isLoggedIn = false;
-        this.userName = '';
-        this.showToast('Logged out successfully!', 'success');
-    },
-    
-    showToast(message, type) {
-        const toast = document.createElement('div');
-        const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
-        toast.className = `fixed bottom-6 right-6 z-[300] ${bgColor} text-white px-5 py-3 rounded-xl shadow-lg flex items-center gap-2 slide-up`;
-        toast.innerHTML = `<i class="fa-solid ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${message}`;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
-    }
-}"
-x-init="init()"
-:class="darkMode ? 'dark' : ''"
-class="min-h-screen">
+<body class="flex flex-col min-h-screen">
 
-    <!-- ============================================ -->
-    <!-- PREMIUM HEADER WITH GLASS EFFECT -->
-    <!-- ============================================ -->
-    <header :class="darkMode ? 'glass-dark' : 'glass'" class="sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 h-16 lg:h-20 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <i class="fa-solid fa-print text-white text-lg"></i>
+    <!-- Header Component -->
+    <header class="bg-white border-b sticky top-0 z-50 shadow-sm" x-data="{ mobileMenuOpen: false, servicesDrawerOpen: false, paymentModalOpen: false, partnerModalOpen: false }" @open-payment-modal.window="paymentModalOpen = true">
+        
+        <!-- Payment QR Modal -->
+        <div x-show="paymentModalOpen" x-cloak style="display: none;" class="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm" @click.self="paymentModalOpen = false">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden" x-data="paymentApp()" x-init="initApp()">
+                <div class="bg-gradient-to-br from-purple-600 to-indigo-700 p-5 text-white text-center">
+                    <h3 class="font-bold text-lg" x-text="getHeaderName()"></h3>
+                    <p class="text-purple-200 text-xs mt-1" x-text="currentUpi || 'Select Account'"></p>
                 </div>
-                <div>
-                    <span class="text-xl font-extrabold text-gray-800 dark:text-white">Cyber<span class="gradient-text">Hero</span></span>
-                    <span class="text-[9px] font-bold text-gray-400 block -mt-0.5">Premium Digital Services</span>
+                <div class="p-5">
+                    <div class="bg-white p-3 rounded-xl shadow mx-auto w-48 h-48 flex items-center justify-center border">
+                        <canvas id="qr-canvas" class="w-full h-full"></canvas>
+                    </div>
+                    <div class="mt-4">
+                        <label class="text-xs font-bold text-gray-500">Select Account</label>
+                        <select x-model="selectedIdx" @change="selectAccount($event.target.value)" class="w-full mt-1 p-2 border rounded-lg text-sm">
+                            <template x-for="(acc, idx) in accounts" :key="idx">
+                                <option :value="idx" x-text="acc.name"></option>
+                            </template>
+                        </select>
+                    </div>
+                    <div class="mt-3">
+                        <label class="text-xs font-bold text-gray-500">Amount (Optional)</label>
+                        <input type="number" x-model="amount" @input="generateQR()" placeholder="Enter amount" class="w-full mt-1 p-2 border rounded-lg text-sm">
+                    </div>
+                    <button @click="paymentModalOpen = false" class="mt-4 w-full py-2 bg-gray-100 rounded-lg text-sm font-semibold">Close</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Partner Modal -->
+        <div x-show="partnerModalOpen" x-cloak style="display: none;" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" @click.self="partnerModalOpen = false">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden">
+                <div class="bg-gradient-to-r from-orange-500 to-red-500 p-5 text-center text-white">
+                    <i class="fa-solid fa-store text-4xl mb-2"></i>
+                    <h3 class="font-bold text-xl">Cyber Cafe Partner</h3>
+                    <p class="text-sm opacity-90">Grow your Business</p>
+                </div>
+                <div class="p-5">
+                    <ul class="space-y-3 mb-5">
+                        <li class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check-circle text-green-500"></i> Free Shop Promotion</li>
+                        <li class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check-circle text-green-500"></i> Direct Customer Chat</li>
+                        <li class="flex items-center gap-2 text-sm"><i class="fa-solid fa-check-circle text-green-500"></i> Priority Support</li>
+                    </ul>
+                    <a href="/en/register?role=partner" class="block w-full bg-orange-500 text-white py-3 rounded-xl text-center font-bold hover:bg-orange-600 transition">Start Free Trial</a>
+                    <button @click="partnerModalOpen = false" class="w-full mt-3 text-gray-500 text-sm py-2">Cancel</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Navbar -->
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="/en/" class="flex items-center gap-2 shrink-0">
+                <img src="https://akprinthub.com/android-chrome-512x512.png" class="w-9 h-9 rounded-lg object-cover" alt="Logo">
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold text-gray-800">CYEBE<span class="text-blue-600">HERO</span></span>
+                    <span class="text-[9px] font-semibold text-purple-600 -mt-0.5">BY TEJSINGH KANERIYA</span>
                 </div>
             </a>
-
+            
             <!-- Desktop Navigation -->
-            <nav class="hidden lg:flex items-center gap-8">
-                <a href="#" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
-                <div x-data="{ open: false }" class="relative">
-                    <button @click="open = !open" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition flex items-center gap-1">
-                        Services <i class="fa-solid fa-chevron-down text-xs" :class="open ? 'rotate-180' : ''"></i>
-                    </button>
-                    <div x-show="open" @click.away="open = false" x-transition class="absolute top-full left-0 mt-3 w-72 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border dark:border-slate-700 overflow-hidden z-50">
-                        <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-indigo-50 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-file-pdf text-red-500"></i><span>JPG to PDF</span></a>
-                        <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-indigo-50 dark:hover:bg-slate-700 transition"><i class="fa-regular fa-id-card text-indigo-500"></i><span>Passport Photo</span></a>
-                        <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-indigo-50 dark:hover:bg-slate-700 transition"><i class="fa-solid fa-object-group text-green-500"></i><span>Merge PDF</span></a>
-                        <a href="#" class="flex items-center gap-3 px-5 py-3 hover:bg-indigo-50 dark:hover:bg-slate-700 transition"><i class="fa-regular fa-credit-card text-purple-500"></i><span>ID Card Print</span></a>
-                    </div>
-                </div>
-                <a href="#" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Latest Jobs</a>
-                <a href="#" class="font-semibold text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition">Pricing</a>
+            <nav class="hidden md:flex gap-6 text-sm font-semibold text-gray-600">
+                <a href="/en/" class="hover:text-blue-600 text-blue-600">Home</a>
+                <a href="/en/jobs" class="hover:text-blue-600">Latest Jobs</a>
+                <a href="/en/pricing" class="hover:text-blue-600">Pricing</a>
+                <a href="/en/about" class="hover:text-blue-600">About</a>
             </nav>
-
+            
             <!-- Right Actions -->
-            <div class="flex items-center gap-3">
-                <!-- Dark Mode Toggle -->
-                <button @click="toggleDarkMode" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-slate-700 hover:scale-110 transition flex items-center justify-center">
-                    <i class="fa-solid text-lg" :class="darkMode ? 'fa-sun text-yellow-400' : 'fa-moon text-gray-600'"></i>
-                </button>
-                
-                <!-- QR Button -->
-                <button @click="paymentModal = true" class="w-10 h-10 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:scale-110 transition shadow-md">
+            <div class="flex items-center gap-2">
+                <button @click="paymentModalOpen = true" class="w-9 h-9 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition" title="Payment QR">
                     <i class="fa-solid fa-qrcode"></i>
                 </button>
-                
-                <!-- Login / User Menu -->
-                <template x-if="!isLoggedIn">
-                    <button @click="loginModal = true" class="hidden md:flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-full font-semibold hover:shadow-lg transition hover:scale-105">
-                        <i class="fa-regular fa-user"></i> Login
-                    </button>
-                </template>
-                <template x-if="isLoggedIn">
-                    <div class="hidden md:flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-slate-800 dark:to-slate-700 rounded-full">
-                        <i class="fa-regular fa-circle-user text-indigo-600 dark:text-indigo-400 text-xl"></i>
-                        <span class="font-semibold text-gray-700 dark:text-gray-300" x-text="userName"></span>
-                        <button @click="logout" class="text-red-500 hover:text-red-600 text-sm ml-2">Logout</button>
-                    </div>
-                </template>
-                
-                <!-- Partner Button -->
-                <button @click="partnerModal = true" class="hidden md:flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-full text-sm font-bold hover:scale-105 transition shadow-md">
-                    <i class="fa-solid fa-store"></i> Cyber Cafe
+                <button @click="partnerModalOpen = true" class="hidden md:flex items-center gap-1 bg-orange-500 text-white px-3 py-1.5 rounded-full text-xs font-bold hover:bg-orange-600 transition">
+                    <i class="fa-solid fa-store"></i> Cyber Cafe?
                 </button>
-                
-                <!-- Mobile Menu Toggle -->
-                <button @click="mobileMenu = !mobileMenu" class="lg:hidden w-10 h-10 rounded-full bg-gray-100 dark:bg-slate-700 flex items-center justify-center">
-                    <i class="fa-solid text-lg" :class="mobileMenu ? 'fa-times' : 'fa-bars'"></i>
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center">
+                    <i class="fa-solid" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
                 </button>
             </div>
         </div>
         
         <!-- Mobile Menu -->
-        <div x-show="mobileMenu" x-cloak class="lg:hidden bg-white dark:bg-slate-800 border-t dark:border-slate-700 p-5 space-y-3 shadow-lg">
-            <a href="#" class="block py-2 font-semibold text-gray-700 dark:text-gray-300">Home</a>
-            <a href="#" class="block py-2 font-semibold text-gray-700 dark:text-gray-300">Services</a>
-            <a href="#" class="block py-2 font-semibold text-gray-700 dark:text-gray-300">Latest Jobs</a>
-            <a href="#" class="block py-2 font-semibold text-gray-700 dark:text-gray-300">Pricing</a>
-            <hr class="dark:border-slate-700">
-            <button @click="loginModal = true; mobileMenu = false" class="w-full py-2 bg-indigo-600 text-white rounded-xl font-semibold">Login</button>
-            <button @click="partnerModal = true; mobileMenu = false" class="w-full py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl font-semibold">Cyber Cafe Partner</button>
+        <div x-show="mobileMenuOpen" x-cloak style="display: none;" class="md:hidden absolute top-16 left-0 w-full bg-white border-b shadow-xl rounded-b-2xl overflow-hidden">
+            <div class="p-4 space-y-3">
+                <a href="/en/" class="block py-2 text-gray-700 font-semibold">Home</a>
+                <a href="/en/jobs" class="block py-2 text-gray-700 font-semibold">Latest Jobs</a>
+                <a href="/en/pricing" class="block py-2 text-gray-700 font-semibold">Pricing</a>
+                <a href="/en/about" class="block py-2 text-gray-700 font-semibold">About</a>
+                <button @click="partnerModalOpen = true; mobileMenuOpen = false" class="w-full bg-orange-500 text-white py-2.5 rounded-xl text-sm font-bold">Cyber Cafe Partner</button>
+            </div>
         </div>
+        
+        <!-- Floating WhatsApp Button -->
+        <a href="https://wa.me/916377523634?text=Hi,%20I%20need%20help" target="_blank" class="fixed bottom-6 right-4 z-50 bg-[#25D366] text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition whatsapp-ring">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+        </a>
     </header>
 
-    <!-- ============================================ -->
-    <!-- HERO SECTION - PREMIUM DESIGN -->
-    <!-- ============================================ -->
-    <section class="relative overflow-hidden py-16 lg:py-24">
-        <!-- Background Decor -->
-        <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style="animation-delay: 2s;"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 text-center relative">
-            <div class="inline-flex items-center gap-2 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm px-5 py-2 rounded-full shadow-sm mb-6">
-                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-sm font-semibold text-gray-600 dark:text-gray-400">Trusted by 10,000+ users</span>
-            </div>
+    <!-- Main Content -->
+    <main class="flex-grow pt-4 pb-20">
+        <div class="max-w-7xl mx-auto px-3 lg:px-4">
             
-            <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight">
-                <span class="text-gray-900 dark:text-white">Launch Your Digital</span><br>
-                <span class="gradient-text">Operations With CyberHero</span>
-            </h1>
-            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">
-                Your all-in-one platform for seamless online printing, PDF tools, passport photo maker, and digital services.
-            </p>
-            
+            <!-- Hero Section -->
+            <header class="relative overflow-hidden mb-8 p-6 lg:p-12 rounded-2xl lg:rounded-3xl animate-fade-in-down shadow-xl animate-gradient-flow">
+                <div class="relative z-10 text-center text-white">
+                    <h1 class="text-2xl lg:text-5xl font-extrabold mb-2 lg:mb-4 drop-shadow-md">CYEBEHERO - BY TEJSINGH KANERIYA</h1>
+                    <p class="text-sm lg:text-lg text-white/90 max-w-2xl mx-auto">Your all-in-one platform for seamless online printing, PDF tools, and digital services.</p>
+                </div>
+            </header>
+
             <!-- Search Bar -->
-            <div class="max-w-xl mx-auto">
-                <div class="relative group">
-                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-30 transition"></div>
-                    <div class="relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center p-2">
-                        <i class="fa-solid fa-search text-gray-400 ml-4"></i>
-                        <input type="text" x-model="searchQuery" placeholder="Search services, forms, files... (e.g. Aadhaar, PDF, Passport)"
-                               class="flex-1 p-3 outline-none bg-transparent dark:text-white">
-                    </div>
+            <div class="relative max-w-2xl mx-auto mb-10">
+                <div class="relative">
+                    <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="searchInput" placeholder="Search services... (e.g. PDF, Passport, Aadhaar)" class="w-full py-3 pl-11 pr-4 bg-white rounded-xl border border-gray-200 shadow-sm focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none">
                 </div>
+                <div id="searchResults" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border max-h-80 overflow-y-auto z-30"></div>
             </div>
-        </div>
-    </section>
 
-    <!-- ============================================ -->
-    <!-- SERVICES GRID SECTION -->
-    <!-- ============================================ -->
-    <section class="services-section py-12 lg:py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-8 bg-gradient-to-b from-indigo-500 to-purple-600 rounded-full"></div>
-                <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Essential & <span class="gradient-text">Services</span></h2>
-            </div>
+            <!-- Services Grid -->
+            <div id="servicesContainer" class="space-y-10"></div>
             
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5" id="servicesGrid">
-                <!-- Services loaded dynamically -->
-            </div>
+            <!-- Why Choose Us -->
+            <section class="mb-12">
+                <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8">Why Choose CYEBEHERO?</h2>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border text-center"><i class="fas fa-bolt text-3xl text-purple-500 mb-2 block"></i><h3 class="font-bold">Simple & Fast</h3><p class="text-xs text-gray-500 mt-1">Complete work in seconds</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border text-center"><i class="fas fa-layer-group text-3xl text-green-500 mb-2 block"></i><h3 class="font-bold">All in One Place</h3><p class="text-xs text-gray-500 mt-1">50+ tools available</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border text-center"><i class="fas fa-shield-alt text-3xl text-red-500 mb-2 block"></i><h3 class="font-bold">Safe & Secure</h3><p class="text-xs text-gray-500 mt-1">No data storage</p></div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border text-center"><i class="fas fa-hand-holding-dollar text-3xl text-blue-500 mb-2 block"></i><h3 class="font-bold">99% Free</h3><p class="text-xs text-gray-500 mt-1">Affordable plans</p></div>
+                </div>
+            </section>
+            
+            <!-- FAQ Section -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border">
+                <h2 class="text-2xl font-bold text-center mb-6">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div><h3 class="font-bold">What services are available on CYEBEHERO?</h3><p class="text-gray-600 text-sm mt-1">You can use JPG to PDF conversion, passport size photo maker, ID card printing, resume builder, and many more tools.</p></div>
+                    <div class="border-t pt-4"><h3 class="font-bold">Are the tools free?</h3><p class="text-gray-600 text-sm mt-1">Many basic tools are absolutely free. Some advanced features are available under Pro Plan.</p></div>
+                    <div class="border-t pt-4"><h3 class="font-bold">Is my data safe?</h3><p class="text-gray-600 text-sm mt-1">Yes, your files are permanently deleted from our servers within hours of processing.</p></div>
+                </div>
+            </section>
         </div>
-    </section>
+    </main>
 
-    <!-- ============================================ -->
-    <!-- CYBER CAFE PARTNER SECTION - PREMIUM -->
-    <!-- ============================================ -->
-    <section class="py-12">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 mt-auto border-t-4 border-indigo-600 pt-12 pb-6">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-3xl p-8 lg:p-12 text-white relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
-                <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full -ml-32 -mb-32"></div>
-                
-                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
-                    <div class="text-center lg:text-left">
-                        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4">
-                            <i class="fa-solid fa-store text-sm"></i>
-                            <span class="text-sm font-semibold">Partner Program</span>
-                        </div>
-                        <h2 class="text-3xl lg:text-4xl font-bold mb-3">Cyber Cafe Partner</h2>
-                        <p class="text-orange-100 mb-5">Grow your Business with CyberHero</p>
-                        <button @click="partnerModal = true" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:shadow-xl transition transform hover:scale-105">
-                            <i class="fa-solid fa-store mr-2"></i> Apply Now - 2 Months Free
-                        </button>
-                    </div>
-                    
-                    <div class="flex gap-4">
-                        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-5 text-center hover:scale-105 transition">
-                            <i class="fa-solid fa-store text-3xl mb-2"></i>
-                            <p class="text-sm font-bold">Free Shop Promotion</p>
-                            <p class="text-xs text-orange-100 mt-1">Your Shop Name on Website</p>
-                        </div>
-                        <div class="bg-white/20 backdrop-blur-sm rounded-2xl p-5 text-center hover:scale-105 transition">
-                            <i class="fa-brands fa-whatsapp text-3xl mb-2"></i>
-                            <p class="text-sm font-bold">Direct Customer Chat</p>
-                            <p class="text-xs text-orange-100 mt-1">Students contact you</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div><a href="/en/" class="text-2xl font-bold text-white">CYEBE<span class="text-indigo-500">HERO</span></a><p class="text-sm mt-3">Digital India's trusted platform for printing and documentation.</p></div>
+                <div><h3 class="text-white font-semibold mb-4">Quick Links</h3><ul class="space-y-2 text-sm"><li><a href="/en/" class="hover:text-white">Home</a></li><li><a href="/en/pricing" class="hover:text-white">Pricing</a></li><li><a href="/en/jobs" class="hover:text-white">Jobs</a></li></ul></div>
+                <div><h3 class="text-white font-semibold mb-4">Legal</h3><ul class="space-y-2 text-sm"><li><a href="/en/privacy" class="hover:text-white">Privacy Policy</a></li><li><a href="/en/terms" class="hover:text-white">Terms & Conditions</a></li><li><a href="/en/refund-policy" class="hover:text-white">Refund Policy</a></li></ul></div>
+                <div><h3 class="text-white font-semibold mb-4">Connect</h3><div class="flex gap-3"><a href="https://whatsapp.com/channel/0029Vb7zpA323n3ZuWuTMu0L" target="_blank" class="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-green-600 hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a><a href="https://www.instagram.com/akprinthub" target="_blank" class="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-pink-600 hover:text-white transition"><i class="fa-brands fa-instagram"></i></a><a href="https://www.facebook.com/share/17ubTiUpZC/" target="_blank" class="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition"><i class="fa-brands fa-facebook-f"></i></a></div></div>
             </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- LOGIN MODAL -->
-    <!-- ============================================ -->
-    <div x-show="loginModal" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-8 relative animate-fade-in-up">
-            <button @click="loginModal = false" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">✕</button>
-            <div class="text-center mb-6">
-                <div class="w-20 h-20 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <i class="fa-regular fa-user text-white text-3xl"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Welcome Back!</h3>
-                <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Login to your account</p>
-            </div>
-            <input type="email" x-model="loginEmail" placeholder="Email Address" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-400">
-            <input type="password" x-model="loginPassword" placeholder="Password" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-5 bg-gray-50 dark:bg-slate-900 dark:text-white outline-none focus:ring-2 focus:ring-indigo-400">
-            <button @click="handleLogin" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition">Login</button>
-            <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
-                Don't have account? 
-                <a href="#" class="text-indigo-600 font-semibold">Sign Up</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- PARTNER MODAL -->
-    <!-- ============================================ -->
-    <div x-show="partnerModal" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto">
-            <button @click="partnerModal = false" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">✕</button>
-            <div class="bg-gradient-to-r from-orange-500 to-red-600 -mt-6 -mx-6 p-5 text-center text-white rounded-t-3xl mb-5">
-                <i class="fa-solid fa-store text-3xl mb-2"></i>
-                <h3 class="text-xl font-bold">Cyber Cafe Partner Registration</h3>
-                <p class="text-sm text-orange-100">2 Months Free Trial</p>
-            </div>
-            <input type="text" x-model="partnerShopName" placeholder="Shop/Cyber Cafe Name" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
-            <input type="text" x-model="partnerOwnerName" placeholder="Owner Name" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
-            <input type="tel" x-model="partnerMobile" placeholder="Mobile Number" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
-            <input type="email" x-model="partnerEmail" placeholder="Email (Optional)" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
-            <input type="text" x-model="partnerCity" placeholder="City/District" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-3 bg-gray-50 dark:bg-slate-900 dark:text-white">
-            <textarea x-model="partnerAddress" placeholder="Full Address with PIN Code" rows="3" class="w-full p-3 border dark:border-slate-700 rounded-xl mb-5 bg-gray-50 dark:bg-slate-900 dark:text-white"></textarea>
-            <button @click="registerPartner" class="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 rounded-xl font-semibold hover:shadow-lg transition">Submit Application</button>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- PAYMENT QR MODAL -->
-    <!-- ============================================ -->
-    <div x-show="paymentModal" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-sm w-full p-6 text-center">
-            <h3 class="font-bold text-xl text-gray-900 dark:text-white mb-3">Scan to Pay</h3>
-            <div class="bg-gray-100 dark:bg-slate-700 p-4 rounded-2xl mb-4 flex justify-center">
-                <canvas id="qrCanvas" width="180" height="180" class="w-44 h-44"></canvas>
-            </div>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">UPI ID: <span class="font-mono text-indigo-600">cyberhero@ybl</span></p>
-            <button @click="paymentModal = false" class="w-full py-2 bg-gray-200 dark:bg-slate-700 rounded-xl font-semibold hover:bg-gray-300 transition">Close</button>
-        </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- FLOATING WHATSAPP BUTTON -->
-    <!-- ============================================ -->
-    <a href="https://wa.me/916377523634?text=Hi%20I%20need%20help" target="_blank" class="fixed bottom-6 right-6 z-[90] group">
-        <div class="relative">
-            <div class="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
-            <div class="relative bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
-                <i class="fa-brands fa-whatsapp text-2xl"></i>
-            </div>
-        </div>
-    </a>
-
-    <!-- ============================================ -->
-    <!-- FOOTER -->
-    <!-- ============================================ -->
-    <footer class="bg-gray-900 text-gray-400 mt-16 py-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="flex justify-center gap-8 mb-6">
-                <a href="#" class="hover:text-white transition">About Us</a>
-                <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition">Terms & Conditions</a>
-                <a href="#" class="hover:text-white transition">Contact</a>
-            </div>
-            <p>© 2024 CyberHero. Made with <i class="fa-solid fa-heart text-red-500 animate-pulse"></i> in India</p>
+            <div class="border-t border-gray-800 pt-6 text-center text-sm">© 2024 CYEBEHERO. All rights reserved. Made with <i class="fa-solid fa-heart text-red-500"></i> in India by Tejsingh Kaneriya</div>
         </div>
     </footer>
 
     <script>
+        // Payment App Alpine Component
+        function paymentApp() {
+            return {
+                accounts: [],
+                selectedIdx: 0,
+                currentUpi: null,
+                amount: '',
+                qr: null,
+                initApp() {
+                    const saved = localStorage.getItem('my_upi_accounts');
+                    if (saved) {
+                        try {
+                            this.accounts = JSON.parse(saved);
+                            if (this.accounts.length > 0) this.selectAccount(0);
+                            else this.accounts = [{ name: 'Demo Shop', upi: 'demo@okhdfcbank' }];
+                        } catch(e) { this.accounts = [{ name: 'Demo Shop', upi: 'demo@okhdfcbank' }]; }
+                    } else {
+                        this.accounts = [{ name: 'Demo Shop', upi: 'demo@okhdfcbank' }];
+                    }
+                    this.selectAccount(0);
+                },
+                getHeaderName() { return this.accounts[this.selectedIdx]?.name || 'Receive Payment'; },
+                selectAccount(idx) {
+                    this.selectedIdx = parseInt(idx);
+                    this.currentUpi = this.accounts[this.selectedIdx]?.upi;
+                    this.generateQR();
+                },
+                generateQR() {
+                    if (!this.currentUpi) return;
+                    let upiUrl = `upi://pay?pa=${this.currentUpi}&pn=${encodeURIComponent(this.getHeaderName())}&cu=INR`;
+                    if (this.amount && this.amount > 0) upiUrl += `&am=${parseFloat(this.amount).toFixed(2)}`;
+                    setTimeout(() => {
+                        const canvas = document.getElementById('qr-canvas');
+                        if (canvas && typeof QRious !== 'undefined') {
+                            new QRious({ element: canvas, size: 200, value: upiUrl });
+                        }
+                    }, 50);
+                }
+            };
+        }
+        
         // Services Data
         const servicesData = [
-            { name: "Latest Jobs", icon: "fa-solid fa-briefcase", bg: "from-blue-500 to-cyan-500", badge: "NEW", badgeColor: "bg-blue-500", desc: "Sarkari Naukri Updates" },
-            { name: "Mock Test", icon: "fa-solid fa-clipboard-list", bg: "from-red-500 to-orange-500", badge: "NEW", badgeColor: "bg-red-500", desc: "Practice for Exams" },
-            { name: "ID Card Print", icon: "fa-regular fa-credit-card", bg: "from-purple-500 to-pink-500", badge: "NEW", badgeColor: "bg-purple-500", desc: "Professional ID Cards" },
-            { name: "Passport Photo", icon: "fa-regular fa-id-card", bg: "from-indigo-500 to-purple-600", badge: null, desc: "Passport Size Photos" },
-            { name: "Photo Crop Resize", icon: "fa-solid fa-crop", bg: "from-teal-500 to-emerald-500", badge: null, desc: "Edit Photos" },
-            { name: "Resume/CV", icon: "fa-regular fa-file-lines", bg: "from-pink-500 to-rose-500", badge: null, desc: "Professional Resume" },
-            { name: "PPT/Profile", icon: "fa-solid fa-presentation", bg: "from-amber-500 to-yellow-500", badge: "NEW", badgeColor: "bg-amber-500", desc: "PowerPoint Templates" },
-            { name: "NSDL PAAM ID", icon: "fa-solid fa-id-card-clip", bg: "from-slate-500 to-gray-500", badge: "HOT", badgeColor: "bg-red-600 hot-badge", desc: "Agency ID Purchase" },
-            { name: "Payment Locked QR", icon: "fa-solid fa-qrcode", bg: "from-green-500 to-emerald-500", badge: "HOT", badgeColor: "bg-red-600 hot-badge", desc: "Scan to Pay" },
-            { name: "JPG to PDF", icon: "fa-solid fa-file-pdf", bg: "from-red-500 to-orange-500", badge: null, desc: "Convert Images to PDF" },
-            { name: "Merge PDF", icon: "fa-solid fa-object-group", bg: "from-green-500 to-teal-500", badge: null, desc: "Combine PDF Files" },
-            { name: "PDF to JPG", icon: "fa-regular fa-image", bg: "from-blue-500 to-indigo-500", badge: null, desc: "Extract Images" }
+            { id: "jpg-to-pdf", slug: "tool/jpg-to-pdf", name: "JPG to PDF", description: "Convert JPG images to PDF", icon: "fa-file-image", color: "red", type: "tool" },
+            { id: "pdf-to-jpg", slug: "tool/pdf-to-jpg", name: "PDF to JPG", description: "Convert PDF to images", icon: "fa-file-pdf", color: "orange", type: "tool" },
+            { id: "merge-pdf", slug: "tool/merge-pdf", name: "Merge PDF", description: "Combine multiple PDFs", icon: "fa-object-group", color: "purple", type: "tool" },
+            { id: "passport-photo", slug: "service/passport-photo", name: "Passport Photo", description: "Make passport size photos", icon: "fa-user-tie", color: "indigo", type: "service" },
+            { id: "id-card-print", slug: "service/id-card-print", name: "ID Card Print", description: "Print ID cards easily", icon: "fa-id-card", color: "orange", type: "service" },
+            { id: "resume-print", slug: "service/resume-print", name: "Resume Maker", description: "Create professional resume", icon: "fa-file-alt", color: "pink", type: "service" },
+            { id: "photo-crop-resize", slug: "service/photo-crop-resize", name: "Photo Crop", description: "Crop and resize photos", icon: "fa-crop", color: "teal", type: "service" },
+            { id: "latest-jobs", slug: "jobs", name: "Latest Jobs", description: "Sarkari Naukri updates", icon: "fa-briefcase", color: "blue", type: "service" },
+            { id: "mock-test", slug: "mock-tests", name: "Mock Test", description: "Practice for exams", icon: "fa-clipboard-list", color: "red", type: "service" }
         ];
-
-        // Load Services into Grid
-        const grid = document.getElementById('servicesGrid');
-        if (grid) {
-            servicesData.forEach(service => {
-                const card = document.createElement('div');
-                card.className = 'service-card bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-md hover:shadow-xl';
-                card.innerHTML = `
-                    <div class="relative">
-                        ${service.badge ? `<span class="absolute -top-2 -right-2 px-2 py-0.5 text-[10px] font-bold rounded-full ${service.badgeColor} text-white uppercase shadow-md">${service.badge}</span>` : ''}
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br ${service.bg} flex items-center justify-center mx-auto mb-3 shadow-md">
-                            <i class="${service.icon} text-white text-xl"></i>
-                        </div>
-                        <h3 class="font-bold text-gray-800 dark:text-white text-center text-sm mb-1">${service.name}</h3>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 text-center">${service.desc}</p>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
+        
+        // Helper: Create Service Card
+        function createServiceCard(service) {
+            const a = document.createElement('a');
+            a.href = `/${service.slug}`;
+            a.className = `service-card bg-white rounded-xl border border-${service.color}-100 p-4 text-center shadow-sm hover:shadow-md no-underline block`;
+            a.innerHTML = `
+                <div class="w-12 h-12 rounded-xl bg-${service.color}-50 flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid ${service.icon} text-${service.color}-500 text-xl"></i>
+                </div>
+                <h3 class="font-bold text-gray-800 text-sm capitalize">${service.name}</h3>
+                <p class="text-gray-500 text-xs mt-1 line-clamp-2">${service.description}</p>
+            `;
+            return a;
         }
-
-        // Search Filter
-        const searchInput = document.querySelector('input[x-model="searchQuery"]');
-        if (searchInput) {
-            const handleSearch = () => {
-                const query = window.app?.searchQuery?.toLowerCase() || '';
-                document.querySelectorAll('.service-card').forEach((card, i) => {
-                    const title = card.querySelector('h3')?.innerText.toLowerCase() || '';
-                    if (title.includes(query)) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            };
+        
+        // Render Services
+        function renderServices() {
+            const container = document.getElementById('servicesContainer');
+            if (!container) return;
             
-            // Watch for changes
-            setInterval(handleSearch, 100);
+            const essential = servicesData.filter(s => ['latest-jobs', 'mock-test', 'passport-photo', 'id-card-print', 'resume-print'].includes(s.id));
+            const tools = servicesData.filter(s => ['jpg-to-pdf', 'pdf-to-jpg', 'merge-pdf'].includes(s.id));
+            const others = servicesData.filter(s => ![...essential, ...tools].includes(s));
+            
+            let html = '';
+            if (essential.length) {
+                html += `<div><div class="flex items-center gap-2 mb-4"><div class="w-1 h-6 bg-blue-500 rounded"></div><h2 class="text-xl font-bold">Essential Services</h2></div><div class="app-grid" id="essentialGrid"></div></div>`;
+            }
+            if (tools.length) {
+                html += `<div class="mt-10"><div class="flex items-center gap-2 mb-4"><div class="w-1 h-6 bg-orange-500 rounded"></div><h2 class="text-xl font-bold">PDF Tools</h2></div><div class="app-grid" id="toolsGrid"></div></div>`;
+            }
+            if (others.length) {
+                html += `<div class="mt-10"><div class="flex items-center gap-2 mb-4"><div class="w-1 h-6 bg-purple-500 rounded"></div><h2 class="text-xl font-bold">More Services</h2></div><div class="app-grid" id="othersGrid"></div></div>`;
+            }
+            container.innerHTML = html;
+            
+            if (essential.length) {
+                const grid = document.getElementById('essentialGrid');
+                essential.forEach(s => grid.appendChild(createServiceCard(s)));
+            }
+            if (tools.length) {
+                const grid = document.getElementById('toolsGrid');
+                tools.forEach(s => grid.appendChild(createServiceCard(s)));
+            }
+            if (others.length) {
+                const grid = document.getElementById('othersGrid');
+                others.forEach(s => grid.appendChild(createServiceCard(s)));
+            }
         }
-
-        // QR Generation
-        const qrCanvas = document.getElementById('qrCanvas');
-        if (qrCanvas && typeof QRious !== 'undefined') {
-            new QRious({
-                element: qrCanvas,
-                value: 'upi://pay?pa=cyberhero@ybl&pn=CyberHero&cu=INR',
-                size: 180,
-                level: 'H'
+        
+        // Search Functionality
+        function initSearch() {
+            const input = document.getElementById('searchInput');
+            const resultsDiv = document.getElementById('searchResults');
+            if (!input) return;
+            
+            input.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase().trim();
+                if (term.length < 2) { resultsDiv.classList.add('hidden'); return; }
+                
+                const filtered = servicesData.filter(s => s.name.toLowerCase().includes(term) || s.description.toLowerCase().includes(term));
+                if (filtered.length === 0) {
+                    resultsDiv.innerHTML = '<div class="p-3 text-center text-gray-500">No results found</div>';
+                } else {
+                    resultsDiv.innerHTML = filtered.map(s => `
+                        <a href="/${s.slug}" class="flex items-center gap-3 p-3 hover:bg-gray-50 border-b last:border-0">
+                            <div class="w-8 h-8 rounded-lg bg-${s.color}-50 flex items-center justify-center"><i class="fa-solid ${s.icon} text-${s.color}-500"></i></div>
+                            <div><div class="font-semibold text-sm capitalize">${s.name}</div><div class="text-xs text-gray-500">${s.description}</div></div>
+                        </a>
+                    `).join('');
+                }
+                resultsDiv.classList.remove('hidden');
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!input.contains(e.target) && !resultsDiv.contains(e.target)) resultsDiv.classList.add('hidden');
             });
         }
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            renderServices();
+            initSearch();
+        });
     </script>
     
     <style>
-        @keyframes fade-in-up {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up {
-            animation: fade-in-up 0.3s ease-out;
+        [x-cloak] { display: none !important; }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
     </style>
 </body>
