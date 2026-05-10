@@ -3,62 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>AkPrintHub Pro - बिजनेस वर्जन</title>
+    <title>Cyber Hero - प्रोफेशनल डिजिटल सर्विसेज प्लेटफॉर्म</title>
+    <meta name="description" content="Cyber Hero - ऑनलाइन PDF टूल्स, पासपोर्ट फोटो, ID कार्ड और डिजिटल सर्विसेज। प्रीपेड बिजनेस मॉडल।">
+    <meta name="author" content="Tejsingh Kaneriya">
+    <meta name="theme-color" content="#4f46e5">
     
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Google AdSense (अपना कोड यहाँ लगाएँ) -->
+    <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXX">
     
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- QRious -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
-    
-    <!-- Tailwind CSS -->
+    <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'poppins': ['Poppins', 'sans-serif'],
-                        'hindi': ['Noto Sans Devanagari', 'Poppins', 'sans-serif']
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
-                        'slide-in': 'slideIn 0.3s ease-out',
-                        'pulse-slow': 'pulse 3s ease-in-out infinite'
-                    },
-                    keyframes: {
-                        fadeIn: { from: { opacity: '0' }, to: { opacity: '1' } },
-                        slideIn: { from: { opacity: '0', transform: 'translateX(20px)' }, to: { opacity: '1', transform: 'translateX(0)' } }
-                    }
-                }
-            }
-        }
-    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        body { font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; background: linear-gradient(135deg, #fef9f0 0%, #fff5e6 100%); }
-        .theme-gradient { background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #f59e0b 100%); background-size: 200% 200%; }
-        .service-card { transition: all 0.3s ease; cursor: pointer; background: white; border-radius: 20px; border: 1px solid rgba(249, 115, 22, 0.15); }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 30px -12px rgba(249, 115, 22, 0.25); border-color: #f97316; }
+        /* ========== COMPLETE CUSTOM CSS ========== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #fef3c7 100%);
+            min-height: 100vh;
+        }
+        
+        /* Hero Gradient Animation */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 30%, #4338ca 60%, #4f46e5 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Service Cards */
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid rgba(79, 70, 229, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 25px 35px -12px rgba(79, 70, 229, 0.25);
+            border-color: #4f46e5;
+        }
+        
         .service-card:active { transform: scale(0.98); }
-        .app-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-        @media (min-width: 640px) { .app-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
-        @media (min-width: 1024px) { .app-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.5rem; } }
-        .balance-card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
-        .toast-notification { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); background: #1e293b; color: white; padding: 12px 24px; border-radius: 50px; z-index: 1000; animation: slideIn 0.3s ease-out; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-        .pro-badge { background: linear-gradient(135deg, #f59e0b, #f97316); }
-        .lock-overlay { background: rgba(0,0,0,0.7); backdrop-filter: blur(2px); }
+        
+        /* App Grid System */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .app-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        }
+        
+        @media (min-width: 1024px) {
+            .app-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; }
+        }
+        
+        /* Glass Effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Toast Notification */
+        .toast-notification {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            z-index: 1000;
+            animation: slideUp 0.3s ease-out;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        
+        /* Modal Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.2s ease-out;
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .animate-bounce {
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4338ca; }
+        
+        /* Pro Badge */
+        .pro-badge {
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Button Hover Effects */
+        .btn-hover {
+            transition: all 0.2s ease;
+        }
+        
+        .btn-hover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.15);
+        }
+        
+        /* QR Container */
+        .qr-container {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: 16px;
+            padding: 16px;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Alpine X-Cloak */
+        [x-cloak] { display: none !important; }
+        
+        /* Responsive Admin Sidebar */
+        @media (max-width: 768px) {
+            .admin-sidebar-mobile {
+                position: fixed;
+                left: -280px;
+                top: 0;
+                bottom: 0;
+                z-index: 1000;
+                background: white;
+                width: 280px;
+                transition: left 0.3s ease;
+            }
+            .admin-sidebar-mobile.open {
+                left: 0;
+            }
+        }
+        
+        /* Table Styles */
+        .transaction-table {
+            width: 100%;
+            font-size: 13px;
+        }
+        
+        .transaction-table th {
+            text-align: left;
+            padding: 10px;
+            background: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+        }
+        
+        .transaction-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        /* Category Button Active State */
+        .category-active {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            box-shadow: 0 4px 10px -2px rgba(79, 70, 229, 0.4);
+        }
+        
+        /* Price Input */
+        .price-input {
+            width: 80px;
+            padding: 6px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+        }
     </style>
 </head>
-<body x-data="app()" x-init="initApp()" class="min-h-screen">
+<body x-data="app()" x-init="initApp()" x-cloak>
 
 <!-- ============================================ -->
 <!-- TOAST NOTIFICATION -->
@@ -66,39 +247,119 @@
 <div x-show="toastMessage" x-text="toastMessage" class="toast-notification" x-transition.duration.300></div>
 
 <!-- ============================================ -->
+<!-- LOADING OVERLAY -->
+<!-- ============================================ -->
+<div x-show="loading" class="fixed inset-0 z-[300] bg-black/70 flex items-center justify-center" x-cloak>
+    <div class="bg-white rounded-2xl p-6 text-center shadow-2xl">
+        <div class="spinner w-10 h-10 border-4 border-indigo-600 border-t-transparent mx-auto"></div>
+        <p class="mt-3 text-gray-600 font-medium">लोड हो रहा है...</p>
+    </div>
+</div>
+
+<!-- ============================================ -->
 <!-- LOGIN / REGISTER MODAL -->
 <!-- ============================================ -->
 <div x-show="showAuthModal" x-cloak style="display: none;" class="fixed inset-0 z-[200] flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-md" @click="showAuthModal = false"></div>
-    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md relative z-[201] overflow-hidden">
-        <div class="theme-gradient p-5 text-center text-white">
-            <button @click="showAuthModal = false" class="absolute top-4 right-4 bg-white/20 rounded-full w-8 h-8"><i class="fas fa-times"></i></button>
-            <i class="fas fa-user-circle text-4xl mb-2"></i>
-            <h3 class="text-xl font-bold" x-text="authMode === 'login' ? 'लॉगिन करें' : 'नया अकाउंट बनाएँ'"></h3>
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md relative z-[201] overflow-hidden animate-fade-in">
+        <div class="hero-gradient p-6 text-center text-white">
+            <button @click="showAuthModal = false" class="absolute top-4 right-4 bg-white/20 rounded-full w-8 h-8 flex items-center justify-center hover:bg-white/30 transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center text-2xl mb-3 animate-float">🛡️</div>
+            <h3 class="text-2xl font-bold" x-text="authMode === 'login' ? 'स्वागत है!' : 'अकाउंट बनाएँ'"></h3>
+            <p class="text-sm text-indigo-200 mt-1">Cyber Hero - आपका डिजिटल साथी</p>
         </div>
         <div class="p-6">
-            <input type="text" x-model="authEmail" placeholder="ईमेल या मोबाइल नंबर" class="w-full p-3 border rounded-xl mb-3 focus:ring-2 focus:ring-orange-300 outline-none">
-            <input type="password" x-model="authPassword" placeholder="पासवर्ड" class="w-full p-3 border rounded-xl mb-4 focus:ring-2 focus:ring-orange-300 outline-none">
+            <input type="text" x-model="authEmail" placeholder="ईमेल या मोबाइल नंबर" 
+                   class="w-full p-3 border border-gray-200 rounded-xl mb-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+            <input type="password" x-model="authPassword" placeholder="पासवर्ड" 
+                   class="w-full p-3 border border-gray-200 rounded-xl mb-4 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
             
-            <button @click="handleAuth()" class="w-full theme-gradient text-white py-3 rounded-xl font-bold" :class="authLoading ? 'opacity-50' : ''" :disabled="authLoading">
-                <i x-show="authLoading" class="fas fa-spinner fa-spin mr-2"></i>
+            <button @click="handleAuth()" class="w-full hero-gradient text-white py-3 rounded-xl font-bold transition btn-hover" :disabled="authLoading">
+                <span x-show="authLoading" class="spinner border-white mr-2"></span>
                 <span x-text="authMode === 'login' ? 'लॉगिन करें' : 'रजिस्टर करें'"></span>
             </button>
             
             <p class="text-center text-sm text-gray-500 mt-4">
                 <span x-text="authMode === 'login' ? 'नए हैं? ' : 'पहले से अकाउंट है? '"></span>
-                <button @click="authMode = authMode === 'login' ? 'register' : 'login'" class="text-orange-500 font-semibold">
+                <button @click="authMode = authMode === 'login' ? 'register' : 'login'" class="text-indigo-600 font-semibold hover:underline">
                     <span x-text="authMode === 'login' ? 'अकाउंट बनाएँ' : 'लॉगिन करें'"></span>
                 </button>
             </p>
             
             <!-- Demo Accounts Info -->
             <div class="mt-4 p-3 bg-gray-50 rounded-xl text-xs text-gray-500">
-                <p class="font-semibold mb-1">📝 डेमो अकाउंट:</p>
-                <p>📧 user@akprinthub.com / 123456 (बैलेंस: ₹50)</p>
-                <p>📧 pro@akprinthub.com / 123456 (बैलेंस: ₹500 + प्रो प्लान)</p>
-                <p>📧 admin@akprinthub.com / admin123 (एडमिन)</p>
+                <p class="font-semibold mb-1 text-indigo-600">📝 डेमो अकाउंट:</p>
+                <p>👤 user@cyberhero.com / 123456 (बैलेंस: ₹50)</p>
+                <p>⭐ pro@cyberhero.com / 123456 (बैलेंस: ₹500 + प्रो)</p>
+                <p>🛡️ admin@cyberhero.com / admin123 (एडमिन)</p>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================ -->
+<!-- RECHARGE / ADD BALANCE MODAL -->
+<!-- ============================================ -->
+<div x-show="showRechargeModal" x-cloak style="display: none;" class="fixed inset-0 z-[200] flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-md" @click="showRechargeModal = false"></div>
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md relative z-[201] overflow-hidden animate-fade-in">
+        <div class="hero-gradient p-5 text-center text-white">
+            <button @click="showRechargeModal = false" class="absolute top-4 right-4 bg-white/20 rounded-full w-8 h-8 hover:bg-white/30 transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <i class="fas fa-wallet text-4xl mb-2"></i>
+            <h3 class="text-xl font-bold">बैलेंस रिचार्ज करें</h3>
+            <p class="text-xs text-indigo-200 mt-1">स्कैन करें और भुगतान करें</p>
+        </div>
+        <div class="p-6">
+            <!-- Amount Selection -->
+            <div class="grid grid-cols-3 gap-2 mb-4">
+                <button @click="rechargeAmount = 50" 
+                        class="py-2 border rounded-xl transition-all" 
+                        :class="rechargeAmount === 50 ? 'bg-indigo-600 text-white border-indigo-600' : 'border-gray-200 hover:bg-indigo-50'">₹50</button>
+                <button @click="rechargeAmount = 100" 
+                        class="py-2 border rounded-xl transition-all" 
+                        :class="rechargeAmount === 100 ? 'bg-indigo-600 text-white border-indigo-600' : 'border-gray-200 hover:bg-indigo-50'">₹100</button>
+                <button @click="rechargeAmount = 500" 
+                        class="py-2 border rounded-xl transition-all" 
+                        :class="rechargeAmount === 500 ? 'bg-indigo-600 text-white border-indigo-600' : 'border-gray-200 hover:bg-indigo-50'">₹500</button>
+                <button @click="rechargeAmount = 1000" 
+                        class="py-2 border rounded-xl transition-all" 
+                        :class="rechargeAmount === 1000 ? 'bg-indigo-600 text-white border-indigo-600' : 'border-gray-200 hover:bg-indigo-50'">₹1000</button>
+                <button @click="rechargeAmount = 2000" 
+                        class="py-2 border rounded-xl transition-all" 
+                        :class="rechargeAmount === 2000 ? 'bg-indigo-600 text-white border-indigo-600' : 'border-gray-200 hover:bg-indigo-50'">₹2000</button>
+                <button @click="rechargeAmount = 5000" 
+                        class="py-2 border rounded-xl transition-all" 
+                        :class="rechargeAmount === 5000 ? 'bg-indigo-600 text-white border-indigo-600' : 'border-gray-200 hover:bg-indigo-50'">₹5000</button>
+            </div>
+            
+            <!-- Custom Amount -->
+            <div class="flex gap-2 mb-5">
+                <input type="number" x-model="customRecharge" placeholder="या अपनी राशि लिखें" 
+                       class="flex-1 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none">
+            </div>
+            
+            <!-- QR Code -->
+            <div class="qr-container mb-4 text-center">
+                <canvas id="rechargeQrCanvas" width="160" height="160" class="mx-auto rounded-xl bg-white p-2 shadow"></canvas>
+                <p class="text-xs text-gray-600 mt-2">UPI ID: <span class="font-mono text-indigo-600 font-semibold">cyberhero@okhdfcbank</span></p>
+                <p class="text-[10px] text-gray-400 mt-1">कोड स्कैन करें और पेमेंट करें</p>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="grid grid-cols-2 gap-2">
+                <button @click="confirmRecharge()" class="bg-green-600 text-white py-3 rounded-xl font-bold hover:bg-green-700 transition btn-hover">
+                    ✅ पेमेंट हो गया
+                </button>
+                <button @click="showRechargeModal = false" class="bg-gray-200 text-gray-700 py-3 rounded-xl font-bold hover:bg-gray-300 transition">
+                    रद्द करें
+                </button>
+            </div>
+            
+            <p class="text-center text-[10px] text-gray-400 mt-3">⚠️ यह डेमो है - पैसे नहीं कटेंगे (सिर्फ डेमो)</p>
         </div>
     </div>
 </div>
@@ -108,574 +369,1021 @@
 <!-- ============================================ -->
 <div x-show="showPlanModal" x-cloak style="display: none;" class="fixed inset-0 z-[200] flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-md" @click="showPlanModal = false"></div>
-    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md relative z-[201] overflow-hidden">
-        <div class="theme-gradient p-5 text-center text-white">
-            <button @click="showPlanModal = false" class="absolute top-4 right-4 bg-white/20 rounded-full w-8 h-8"><i class="fas fa-times"></i></button>
+    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md relative z-[201] overflow-hidden animate-fade-in">
+        <div class="hero-gradient p-5 text-center text-white">
+            <button @click="showPlanModal = false" class="absolute top-4 right-4 bg-white/20 rounded-full w-8 h-8 hover:bg-white/30 transition">
+                <i class="fas fa-times"></i>
+            </button>
             <i class="fas fa-crown text-4xl mb-2"></i>
-            <h3 class="text-xl font-bold">प्रो प्लान में अपग्रेड करें</h3>
+            <h3 class="text-xl font-bold">Cyber Hero प्रो प्लान</h3>
+            <p class="text-xs text-indigo-200 mt-1">अनलिमिटेड एक्सेस पाएँ</p>
         </div>
         <div class="p-6">
+            <!-- Plan Selection -->
             <div class="grid grid-cols-2 gap-3 mb-5">
-                <div class="border rounded-xl p-3 text-center" :class="selectedPlan === 'monthly' ? 'border-orange-500 bg-orange-50' : 'border-gray-200'" @click="selectedPlan = 'monthly'">
-                    <div class="font-bold text-lg">₹299</div>
+                <div class="border rounded-xl p-3 text-center cursor-pointer transition-all" 
+                     :class="selectedPlan === 'monthly' ? 'border-indigo-600 bg-indigo-50 shadow-md' : 'border-gray-200'" 
+                     @click="selectedPlan = 'monthly'">
+                    <div class="font-bold text-lg">₹<span x-text="planPrices.monthly"></span></div>
                     <div class="text-xs text-gray-500">मासिक</div>
+                    <div class="text-[9px] text-green-600 mt-1">30 दिन</div>
                 </div>
-                <div class="border rounded-xl p-3 text-center" :class="selectedPlan === 'yearly' ? 'border-orange-500 bg-orange-50' : 'border-gray-200'" @click="selectedPlan = 'yearly'">
-                    <div class="font-bold text-lg">₹2499</div>
-                    <div class="text-xs text-gray-500">सालाना <span class="text-green-500">(₹208/महीना)</span></div>
+                <div class="border rounded-xl p-3 text-center cursor-pointer transition-all relative" 
+                     :class="selectedPlan === 'yearly' ? 'border-indigo-600 bg-indigo-50 shadow-md' : 'border-gray-200'" 
+                     @click="selectedPlan = 'yearly'">
+                    <div class="absolute -top-2 -right-2 bg-green-500 text-white text-[9px] px-2 rounded-full">🔥 सर्वश्रेष्ठ</div>
+                    <div class="font-bold text-lg">₹<span x-text="planPrices.yearly"></span></div>
+                    <div class="text-xs text-gray-500">सालाना</div>
+                    <div class="text-[9px] text-green-600 mt-1">सेव ₹<span x-text="planPrices.monthly * 12 - planPrices.yearly"></span></div>
                 </div>
             </div>
             
+            <!-- Benefits -->
             <div class="mb-5 p-3 bg-blue-50 rounded-xl">
-                <h4 class="font-bold text-sm mb-2">✨ प्रो प्लान में क्या मिलेगा:</h4>
+                <h4 class="font-bold text-sm mb-2 flex items-center gap-1"><i class="fas fa-gem text-indigo-500"></i> प्रो प्लान में क्या मिलेगा:</h4>
                 <ul class="text-xs space-y-1 text-gray-600">
-                    <li>✓ सभी प्रो टूल्स अनलिमिटेड उपयोग</li>
-                    <li>✓ प्राथमिकता सहायता (24/7)</li>
-                    <li>✓ एड-फ्री अनुभव</li>
-                    <li>✓ एक्स्ट्रा क्रेडिट: ₹100 हर महीने</li>
-                    <li>✓ 10 लोगों तक शेयर कर सकते हैं</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500 text-[10px]"></i> सभी प्रो टूल्स अनलिमिटेड उपयोग</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500 text-[10px]"></i> प्राथमिकता सहायता (24/7)</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500 text-[10px]"></i> एड-फ्री अनुभव</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500 text-[10px]"></i> ₹100 हर महीने कैशबैक</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500 text-[10px]"></i> 10 सदस्यों तक शेयर कर सकते हैं</li>
                 </ul>
             </div>
             
+            <!-- Balance Info -->
             <div class="mb-4 p-3 bg-gray-50 rounded-xl">
                 <div class="flex justify-between text-sm">
-                    <span>आपका वर्तमान बैलेंस:</span>
+                    <span>💰 आपका वर्तमान बैलेंस:</span>
                     <span class="font-bold text-green-600">₹<span x-text="userBalance"></span></span>
+                </div>
+                <div class="flex justify-between text-xs text-gray-400 mt-1">
+                    <span>📅 प्लान एक्टिव होने के बाद:</span>
+                    <span>सभी प्रो टूल्स फ्री</span>
                 </div>
             </div>
             
-            <button @click="upgradeToPro()" class="w-full theme-gradient text-white py-3 rounded-xl font-bold">
-                🚀 अभी अपग्रेड करें - ₹<span x-text="selectedPlan === 'monthly' ? '299' : '2499'"></span>
+            <!-- Upgrade Button -->
+            <button @click="upgradeToPro()" class="w-full hero-gradient text-white py-3 rounded-xl font-bold hover:opacity-90 transition btn-hover">
+                🚀 प्रो प्लान लें - ₹<span x-text="selectedPlan === 'monthly' ? planPrices.monthly : planPrices.yearly"></span>
             </button>
             
-            <p class="text-center text-xs text-gray-400 mt-3">पैसे कटने के बाद 1 दिन में प्लान एक्टिव हो जाएगा</p>
+            <p class="text-center text-[10px] text-gray-400 mt-3">✅ 7 दिन का मनी-बैक गारंटी</p>
         </div>
     </div>
 </div>
 
 <!-- ============================================ -->
-<!-- ADD BALANCE MODAL -->
+<!-- ADMIN PANEL - FULL MANAGEMENT SYSTEM -->
 <!-- ============================================ -->
-<div x-show="showAddBalanceModal" x-cloak style="display: none;" class="fixed inset-0 z-[200] flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-black/70 backdrop-blur-md" @click="showAddBalanceModal = false"></div>
-    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md relative z-[201] overflow-hidden">
-        <div class="theme-gradient p-5 text-center text-white">
-            <button @click="showAddBalanceModal = false" class="absolute top-4 right-4 bg-white/20 rounded-full w-8 h-8"><i class="fas fa-times"></i></button>
-            <i class="fas fa-wallet text-4xl mb-2"></i>
-            <h3 class="text-xl font-bold">बैलेंस ऐड करें</h3>
-        </div>
-        <div class="p-6">
-            <div class="grid grid-cols-3 gap-2 mb-4">
-                <button @click="addAmountValue = 50" class="py-2 border rounded-xl" :class="addAmountValue === 50 ? 'bg-orange-500 text-white' : 'border-gray-200'">₹50</button>
-                <button @click="addAmountValue = 100" class="py-2 border rounded-xl" :class="addAmountValue === 100 ? 'bg-orange-500 text-white' : 'border-gray-200'">₹100</button>
-                <button @click="addAmountValue = 500" class="py-2 border rounded-xl" :class="addAmountValue === 500 ? 'bg-orange-500 text-white' : 'border-gray-200'">₹500</button>
-                <button @click="addAmountValue = 1000" class="py-2 border rounded-xl" :class="addAmountValue === 1000 ? 'bg-orange-500 text-white' : 'border-gray-200'">₹1000</button>
-                <button @click="addAmountValue = 2000" class="py-2 border rounded-xl" :class="addAmountValue === 2000 ? 'bg-orange-500 text-white' : 'border-gray-200'">₹2000</button>
-                <button @click="addAmountValue = 5000" class="py-2 border rounded-xl" :class="addAmountValue === 5000 ? 'bg-orange-500 text-white' : 'border-gray-200'">₹5000</button>
+<div x-show="showAdminPanel" x-cloak style="display: none;" class="fixed inset-0 z-[200] bg-gray-900/95 overflow-y-auto">
+    <div class="max-w-7xl mx-auto p-4 py-6">
+        <!-- Admin Header -->
+        <div class="flex justify-between items-center mb-6 bg-white rounded-2xl p-4 shadow-lg">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 hero-gradient rounded-xl flex items-center justify-center text-white text-xl">🛡️</div>
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-800">एडमिन पैनल</h2>
+                    <p class="text-xs text-gray-500">सर्विसेज, प्राइस, प्लान्स और यूजर्स मैनेज करें</p>
+                </div>
             </div>
-            
-            <div class="flex gap-2 mb-5">
-                <input type="number" x-model="customAmount" placeholder="या अपनी राशि लिखें" class="flex-1 p-3 border rounded-xl">
-            </div>
-            
-            <div class="mb-4 p-3 bg-orange-50 rounded-xl text-center">
-                <canvas id="paymentQrCanvas" width="150" height="150" class="mx-auto rounded-xl"></canvas>
-                <p class="text-xs text-gray-500 mt-2">QR कोड स्कैन करें और पेमेंट करें</p>
-            </div>
-            
-            <div class="grid grid-cols-2 gap-2">
-                <button @click="confirmAddBalance()" class="bg-green-500 text-white py-3 rounded-xl font-bold">✅ पेमेंट हो गया</button>
-                <button @click="showAddBalanceModal = false" class="bg-gray-200 text-gray-700 py-3 rounded-xl font-bold">रद्द करें</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================ -->
-<!-- ADMIN PANEL - नए टूल्स ऐड करने के लिए -->
-<!-- ============================================ -->
-<div x-show="showAdminPanel" x-cloak style="display: none;" class="fixed inset-0 z-[200] flex items-center justify-center p-4">
-    <div class="absolute inset-0 bg-black/70 backdrop-blur-md" @click="showAdminPanel = false"></div>
-    <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto relative z-[201]">
-        <div class="theme-gradient p-5 text-center text-white sticky top-0">
-            <button @click="showAdminPanel = false" class="absolute top-4 right-4 bg-white/20 rounded-full w-8 h-8"><i class="fas fa-times"></i></button>
-            <i class="fas fa-shield-alt text-3xl mb-1"></i>
-            <h3 class="text-xl font-bold">एडमिन पैनल - नई सर्विसेज ऐड करें</h3>
+            <button @click="showAdminPanel = false" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition">
+                <i class="fas fa-times text-gray-600"></i>
+            </button>
         </div>
         
-        <div class="p-6">
-            <h4 class="font-bold mb-3">➕ नई सर्विस जोड़ें</h4>
-            <div class="grid grid-cols-2 gap-3 mb-5">
-                <input type="text" x-model="newService.name" placeholder="सर्विस का नाम" class="p-2 border rounded-lg">
-                <select x-model="newService.cat" class="p-2 border rounded-lg">
-                    <option value="essential">ज़रूरी सर्विसेज</option>
-                    <option value="tools">PDF टूल्स</option>
-                    <option value="print">प्रिंटिंग</option>
-                </select>
-                <input type="text" x-model="newService.icon" placeholder="FontAwesome Icon (fa-file-pdf)" class="p-2 border rounded-lg">
-                <select x-model="newService.pricing" class="p-2 border rounded-lg">
-                    <option value="free">मुफ्त</option>
-                    <option value="pro">प्रो (पैसे वाला)</option>
-                </select>
-                <textarea x-model="newService.desc" placeholder="सर्विस का विवरण" class="col-span-2 p-2 border rounded-lg" rows="2"></textarea>
+        <!-- Stats Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-2xl p-4 shadow">
+                <div class="text-indigo-600 text-2xl mb-2"><i class="fas fa-layer-group"></i></div>
+                <div class="text-2xl font-bold" x-text="servicesData.length"></div>
+                <div class="text-sm text-gray-500">कुल सर्विसेज</div>
             </div>
-            <button @click="addNewService()" class="w-full bg-orange-500 text-white py-2 rounded-lg font-bold">➕ सर्विस ऐड करें</button>
-            
-            <div class="border-t my-5"></div>
-            
-            <h4 class="font-bold mb-3">📋 मौजूदा सर्विसेज</h4>
-            <div class="max-h-60 overflow-y-auto space-y-2">
-                <template x-for="(service, idx) in servicesData" :key="idx">
-                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
-                        <div>
-                            <span class="font-medium" x-text="service.name"></span>
-                            <span class="text-xs px-1 rounded" :class="service.pricing === 'pro' ? 'bg-orange-100 text-orange-600' : 'bg-green-100 text-green-600'" x-text="service.pricing"></span>
+            <div class="bg-white rounded-2xl p-4 shadow">
+                <div class="text-green-600 text-2xl mb-2"><i class="fas fa-users"></i></div>
+                <div class="text-2xl font-bold" x-text="Object.keys(allUsers).length"></div>
+                <div class="text-sm text-gray-500">कुल यूजर्स</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow">
+                <div class="text-orange-600 text-2xl mb-2"><i class="fas fa-crown"></i></div>
+                <div class="text-2xl font-bold" x-text="Object.values(allUsers).filter(u=>u.plan==='pro').length"></div>
+                <div class="text-sm text-gray-500">प्रो यूजर्स</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow">
+                <div class="text-purple-600 text-2xl mb-2"><i class="fas fa-chart-line"></i></div>
+                <div class="text-2xl font-bold">₹<span x-text="totalRevenue"></span></div>
+                <div class="text-sm text-gray-500">कुल रेवेन्यू</div>
+            </div>
+        </div>
+        
+        <div class="grid lg:grid-cols-2 gap-6">
+            <!-- Left: Manage Services -->
+            <div class="bg-white rounded-2xl p-5 shadow">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-cog text-indigo-600"></i> सर्विसेज मैनेज करें</h3>
+                
+                <!-- Add New Service Form -->
+                <div class="mb-5 p-4 bg-gray-50 rounded-xl">
+                    <h4 class="font-bold mb-3 text-sm flex items-center gap-1"><i class="fas fa-plus-circle text-green-600"></i> नई सर्विस जोड़ें</h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        <input type="text" x-model="newService.name" placeholder="सर्विस का नाम" class="p-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-300 outline-none">
+                        <select x-model="newService.cat" class="p-2 border rounded-lg text-sm">
+                            <option value="essential">⭐ ज़रूरी सर्विसेज</option>
+                            <option value="tools">📄 PDF टूल्स</option>
+                            <option value="print">🖨️ प्रिंटिंग</option>
+                        </select>
+                        <input type="text" x-model="newService.icon" placeholder="आइकन (fa-file-pdf)" class="p-2 border rounded-lg text-sm">
+                        <select x-model="newService.pricing" class="p-2 border rounded-lg text-sm">
+                            <option value="free">🎁 मुफ्त</option>
+                            <option value="pro">⭐ प्रो (पैसे वाला)</option>
+                        </select>
+                        <input type="number" x-model="newService.pricePerUse" placeholder="कीमत (प्रो के लिए ₹)" class="p-2 border rounded-lg text-sm" x-show="newService.pricing === 'pro'">
+                        <textarea x-model="newService.desc" placeholder="विवरण" class="col-span-2 p-2 border rounded-lg text-sm" rows="2"></textarea>
+                    </div>
+                    <button @click="addNewService()" class="mt-3 w-full bg-indigo-600 text-white py-2 rounded-lg font-bold text-sm hover:bg-indigo-700 transition">
+                        <i class="fas fa-plus mr-1"></i> सर्विस ऐड करें
+                    </button>
+                </div>
+                
+                <!-- Services List -->
+                <div class="max-h-80 overflow-y-auto space-y-2">
+                    <template x-for="(service, idx) in servicesData" :key="idx">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <i :class="'fas ' + service.icon" class="text-indigo-500 text-sm"></i>
+                                    <span class="font-medium text-sm" x-text="service.name"></span>
+                                    <span class="text-xs px-2 py-0.5 rounded-full" :class="service.pricing === 'pro' ? 'bg-orange-100 text-orange-600' : 'bg-green-100 text-green-600'" x-text="service.pricing"></span>
+                                    <span class="text-xs" :class="service.active ? 'text-green-500' : 'text-red-400'">
+                                        <i :class="service.active ? 'fas fa-circle text-[6px]' : 'fas fa-circle text-[6px]'"></i>
+                                        <span x-text="service.active ? 'एक्टिव' : 'बंद'"></span>
+                                    </span>
+                                </div>
+                                <div class="text-xs text-gray-400 mt-0.5" x-show="service.pricing === 'pro'">
+                                    💰 कीमत: ₹<span x-text="service.pricePerUse"></span> प्रति उपयोग
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button @click="editServicePrice(idx)" class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200 transition" title="कीमत बदलें">
+                                    <i class="fas fa-rupee-sign text-xs"></i>
+                                </button>
+                                <button @click="toggleServiceStatus(idx)" class="w-8 h-8 rounded-lg flex items-center justify-center transition" 
+                                        :class="service.active ? 'bg-green-100 text-green-600 hover:bg-green-200' : 'bg-gray-200 text-gray-500 hover:bg-gray-300'">
+                                    <i :class="service.active ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
+                                </button>
+                                <button @click="deleteService(idx)" class="w-8 h-8 rounded-lg bg-red-100 text-red-600 flex items-center justify-center hover:bg-red-200 transition">
+                                    <i class="fas fa-trash text-xs"></i>
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <button @click="toggleServiceStatus(idx)" class="text-sm px-2 py-1 rounded" :class="service.active ? 'text-green-500' : 'text-red-500'">
-                                <i :class="service.active ? 'fas fa-eye' : 'fas fa-eye-slash'"></i>
-                            </button>
-                            <button @click="deleteService(idx)" class="text-red-500 ml-2"><i class="fas fa-trash"></i></button>
+                    </template>
+                </div>
+            </div>
+            
+            <!-- Right: Plans & Users -->
+            <div class="bg-white rounded-2xl p-5 shadow">
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-crown text-yellow-500"></i> प्लान्स & प्राइसिंग</h3>
+                
+                <!-- Plan Price Editors -->
+                <div class="grid gap-4 mb-6">
+                    <div class="p-4 border rounded-xl bg-gradient-to-r from-indigo-50 to-white">
+                        <div class="flex justify-between items-center flex-wrap gap-3">
+                            <div>
+                                <h4 class="font-bold">📅 मासिक प्लान</h4>
+                                <p class="text-xs text-gray-500">30 दिनों के लिए</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl font-bold">₹</span>
+                                <input type="number" x-model="planPrices.monthly" class="w-24 p-2 border rounded-lg text-center">
+                                <button @click="updatePlanPrices()" class="bg-green-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-green-700 transition">
+                                    <i class="fas fa-save"></i> सेव
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </template>
-            </div>
-            
-            <div class="border-t my-5"></div>
-            
-            <h4 class="font-bold mb-3">📊 यूजर्स लिस्ट</h4>
-            <div class="max-h-40 overflow-y-auto space-y-1 text-sm">
-                <template x-for="(user, uid) in allUsers" :key="uid">
-                    <div class="flex justify-between p-1 border-b">
-                        <span x-text="user.email"></span>
-                        <span class="text-xs">₹<span x-text="user.balance"></span> | <span x-text="user.plan"></span></span>
-                        <button @click="adminAddBalance(uid)" class="text-green-500 text-xs">+₹</button>
+                    <div class="p-4 border rounded-xl bg-gradient-to-r from-orange-50 to-white">
+                        <div class="flex justify-between items-center flex-wrap gap-3">
+                            <div>
+                                <h4 class="font-bold">📅 सालाना प्लान</h4>
+                                <p class="text-xs text-gray-500">365 दिनों के लिए (2 महीने फ्री)</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xl font-bold">₹</span>
+                                <input type="number" x-model="planPrices.yearly" class="w-24 p-2 border rounded-lg text-center">
+                                <button @click="updatePlanPrices()" class="bg-green-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-green-700 transition">
+                                    <i class="fas fa-save"></i> सेव
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </template>
+                </div>
+                
+                <h3 class="font-bold mb-3 flex items-center gap-2"><i class="fas fa-users text-gray-600"></i> यूजर्स मैनेजमेंट</h3>
+                <div class="max-h-80 overflow-y-auto space-y-2">
+                    <template x-for="(user, uid) in allUsers" :key="uid">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl" x-show="user.role !== 'admin'">
+                            <div class="flex-1">
+                                <div class="font-medium text-sm flex items-center gap-2 flex-wrap">
+                                    <span x-text="user.email"></span>
+                                    <span class="text-xs px-1.5 py-0.5 rounded-full" :class="user.plan === 'pro' ? 'bg-orange-100 text-orange-600' : 'bg-gray-200 text-gray-600'">
+                                        <i :class="user.plan === 'pro' ? 'fas fa-crown text-[8px]' : ''"></i> <span x-text="user.plan === 'pro' ? 'प्रो' : 'फ्री'"></span>
+                                    </span>
+                                </div>
+                                <div class="text-xs text-gray-500">बैलेंस: ₹<span x-text="user.balance"></span></div>
+                            </div>
+                            <div class="flex gap-2">
+                                <button @click="adminAddBalance(uid, 100)" class="px-2 py-1 bg-green-600 text-white rounded-lg text-xs hover:bg-green-700 transition">+₹100</button>
+                                <button @click="adminSetPlan(uid, 'pro')" class="px-2 py-1 bg-orange-600 text-white rounded-lg text-xs hover:bg-orange-700 transition" x-show="user.plan !== 'pro'">प्रो बनाएँ</button>
+                                <button @click="adminSetPlan(uid, 'free')" class="px-2 py-1 bg-gray-600 text-white rounded-lg text-xs hover:bg-gray-700 transition" x-show="user.plan === 'pro'">प्रो हटाएँ</button>
+                                <button @click="deleteUser(uid)" class="px-2 py-1 bg-red-600 text-white rounded-lg text-xs hover:bg-red-700 transition"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Transactions Table -->
+        <div class="bg-white rounded-2xl p-5 shadow mt-6">
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-history text-gray-600"></i> हाल के ट्रांजैक्शन</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="p-2 text-left">यूजर</th>
+                            <th class="p-2 text-left">सर्विस</th>
+                            <th class="p-2 text-left">राशि</th>
+                            <th class="p-2 text-left">प्रकार</th>
+                            <th class="p-2 text-left">तारीख</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="tx in allTransactions.slice(0,15)" :key="tx.id">
+                            <tr class="border-b hover:bg-gray-50">
+                                <td class="p-2 text-xs" x-text="tx.userEmail || '—'"></td>
+                                <td class="p-2 text-xs" x-text="tx.service"></td>
+                                <td class="p-2 text-xs" :class="tx.type === 'use' ? 'text-red-500 font-semibold' : 'text-green-500 font-semibold'">₹<span x-text="tx.amount"></span></td>
+                                <td class="p-2 text-xs">
+                                    <span class="px-2 py-0.5 rounded-full text-[10px]" :class="tx.type === 'use' ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600'">
+                                        <i :class="tx.type === 'use' ? 'fas fa-arrow-down' : 'fas fa-arrow-up'"></i>
+                                        <span x-text="tx.type === 'use' ? 'उपयोग' : 'रिचार्ज'"></span>
+                                    </span>
+                                </td>
+                                <td class="p-2 text-xs text-gray-400" x-text="tx.date"></td>
+                            </tr>
+                        </template>
+                        <tr x-show="allTransactions.length === 0">
+                            <td colspan="5" class="text-center py-4 text-gray-400">कोई ट्रांजैक्शन नहीं</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
 
 <!-- ============================================ -->
-<!-- HEADER -->
+<!-- HEADER / NAVBAR -->
 <!-- ============================================ -->
-<header class="bg-white/95 backdrop-blur-md border-b border-orange-100 sticky top-0 z-50 shadow-lg">
+<header class="glass-effect border-b border-gray-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <a href="#" class="flex items-center gap-2">
-            <div class="w-10 h-10 theme-gradient rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">A</div>
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group" @click.prevent="activeCategory='all'">
+            <div class="w-10 h-10 hero-gradient rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition duration-300">🛡️</div>
             <div>
-                <span class="text-xl font-extrabold bg-gradient-to-r from-orange-600 to-orange-500 bg-clip-text text-transparent">AkPrint<span class="text-orange-600">Hub</span></span>
-                <span class="text-[8px] font-bold text-orange-400 block leading-tight">by TechnicalMehta</span>
+                <span class="text-xl font-extrabold bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent">Cyber<span class="text-orange-600">Hero</span></span>
+                <span class="text-[9px] font-bold text-gray-400 block">by Tejsingh Kaneriya | +91 8435485447</span>
             </div>
         </a>
         
-        <div class="hidden md:flex items-center gap-4">
-            <div class="balance-card rounded-full px-4 py-2 text-white text-sm">
-                <i class="fas fa-wallet mr-2"></i> बैलेंस: ₹<span x-text="userBalance"></span>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-5">
+            <!-- Balance Display -->
+            <div class="bg-indigo-50 rounded-full px-4 py-2 text-sm font-semibold shadow-inner">
+                <i class="fas fa-wallet text-indigo-600 mr-2"></i> 
+                ₹<span x-text="userBalance"></span>
             </div>
-            <div x-show="userPlan === 'pro'" class="pro-badge text-white px-3 py-1 rounded-full text-xs font-bold"><i class="fas fa-crown mr-1"></i> प्रो प्लान</div>
-            <button @click="showPlanModal = true" x-show="userPlan !== 'pro'" class="bg-orange-500 text-white px-4 py-1.5 rounded-full text-sm font-bold">🚀 प्रो बनें</button>
-            <button @click="showAddBalanceModal = true" class="bg-green-500 text-white px-4 py-1.5 rounded-full text-sm font-bold">💰 बैलेंस ऐड करें</button>
-            <div class="relative">
-                <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2">
-                    <div class="w-9 h-9 theme-gradient rounded-full flex items-center justify-center text-white"><i class="fas fa-user"></i></div>
-                    <span x-text="currentUser?.email?.split('@')[0] || 'गेस्ट'"></span>
+            
+            <!-- Pro Badge -->
+            <div x-show="userPlan === 'pro'" class="pro-badge text-white px-3 py-1 rounded-full text-xs font-bold shadow">
+                <i class="fas fa-crown mr-1 text-yellow-300"></i> प्रो मेंबर
+            </div>
+            
+            <!-- Pro Button -->
+            <button @click="showPlanModal = true" x-show="userPlan !== 'pro' && currentUser" 
+                    class="bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm font-bold hover:bg-indigo-700 transition btn-hover">
+                🚀 प्रो बनें
+            </button>
+            
+            <!-- Recharge Button -->
+            <button @click="showRechargeModal = true" x-show="currentUser" 
+                    class="bg-green-600 text-white px-4 py-1.5 rounded-full text-sm font-bold hover:bg-green-700 transition btn-hover">
+                💰 रिचार्ज
+            </button>
+            
+            <!-- Login Button -->
+            <template x-if="!currentUser">
+                <button @click="showAuthModal = true" class="bg-indigo-600 text-white px-5 py-1.5 rounded-full text-sm font-bold hover:bg-indigo-700 transition btn-hover">
+                    🔐 लॉगिन
                 </button>
-                <div x-show="userMenuOpen" @click.away="userMenuOpen = false" class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border p-2">
-                    <button @click="logout()" class="w-full text-left p-2 hover:bg-gray-50 rounded-lg text-red-500"><i class="fas fa-sign-out-alt mr-2"></i> लॉगआउट</button>
-                    <button x-show="currentUser?.role === 'admin'" @click="showAdminPanel = true" class="w-full text-left p-2 hover:bg-gray-50 rounded-lg text-purple-500"><i class="fas fa-shield-alt mr-2"></i> एडमिन पैनल</button>
+            </template>
+            
+            <!-- User Menu -->
+            <template x-if="currentUser">
+                <div class="relative">
+                    <button @click="userMenuOpen = !userMenuOpen" class="flex items-center gap-2 hover:bg-gray-100 px-3 py-1.5 rounded-full transition">
+                        <div class="w-8 h-8 hero-gradient rounded-full flex items-center justify-center text-white text-sm shadow">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="text-sm font-medium" x-text="currentUser?.email?.split('@')[0]"></span>
+                        <i class="fas fa-chevron-down text-xs text-gray-400"></i>
+                    </button>
+                    <div x-show="userMenuOpen" @click.away="userMenuOpen = false" x-cloak 
+                         class="absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border p-2 z-50 animate-fade-in">
+                        <button @click="logout()" class="w-full text-left p-2 hover:bg-gray-50 rounded-lg text-red-600 text-sm transition">
+                            <i class="fas fa-sign-out-alt mr-2"></i> लॉगआउट
+                        </button>
+                        <button x-show="currentUser?.role === 'admin'" @click="showAdminPanel = true; userMenuOpen=false" 
+                                class="w-full text-left p-2 hover:bg-gray-50 rounded-lg text-purple-600 text-sm transition mt-1">
+                            <i class="fas fa-shield-alt mr-2"></i> एडमिन पैनल
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </template>
         </div>
         
-        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden w-10 h-10 rounded-full bg-orange-50 text-orange-600"><i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i></button>
+        <!-- Mobile Menu Toggle -->
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
+            <i :class="mobileMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+        </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div x-show="mobileMenuOpen" x-cloak class="md:hidden border-t bg-white p-4 space-y-3 shadow-lg">
+        <div class="flex justify-between items-center pb-2 border-b">
+            <span class="font-bold text-gray-700"><i class="fas fa-wallet text-indigo-600 mr-1"></i> बैलेंस: ₹<span x-text="userBalance"></span></span>
+            <span x-show="userPlan === 'pro'" class="pro-badge text-white px-2 py-0.5 rounded-full text-xs">प्रो</span>
+        </div>
+        
+        <template x-if="!currentUser">
+            <button @click="showAuthModal=true; mobileMenuOpen=false" class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold">
+                🔐 लॉगिन / साइनअप
+            </button>
+        </template>
+        
+        <template x-if="currentUser">
+            <div class="space-y-2">
+                <button @click="showRechargeModal=true; mobileMenuOpen=false" class="w-full bg-green-600 text-white py-2.5 rounded-lg font-semibold">
+                    💰 रिचार्ज करें
+                </button>
+                <button @click="showPlanModal=true; mobileMenuOpen=false" x-show="userPlan !== 'pro'" class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold">
+                    🚀 प्रो बनें
+                </button>
+                <button @click="logout(); mobileMenuOpen=false" class="w-full bg-red-600 text-white py-2.5 rounded-lg font-semibold">
+                    🚪 लॉगआउट
+                </button>
+            </div>
+        </template>
+        
+        <div class="border-t pt-3">
+            <p class="text-center text-xs text-gray-400">
+                <i class="fas fa-phone-alt"></i> +91 8435485447
+            </p>
+        </div>
     </div>
 </header>
 
 <!-- ============================================ -->
 <!-- MAIN CONTENT -->
 <!-- ============================================ -->
-<main class="w-full flex-grow pt-8 pb-24">
-    <div class="max-w-7xl mx-auto px-4">
-        
-        <!-- Hero Section -->
-        <div class="theme-gradient rounded-3xl p-8 md:p-12 mb-8 text-center text-white shadow-2xl">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-3">🪄 AkPrintHub Pro</h1>
-            <p class="text-base md:text-lg opacity-95">PDF टूल्स, पासपोर्ट फोटो, ID कार्ड - प्रो टूल्स के लिए <span class="font-bold">प्रीपेड प्लान</span></p>
-            <div class="flex flex-wrap gap-3 justify-center mt-5">
-                <button @click="showPlanModal = true" class="bg-white text-orange-600 px-5 py-2 rounded-full font-semibold shadow-lg">🚀 प्रो प्लान देखें</button>
-                <button @click="showAddBalanceModal = true" class="bg-orange-600/30 border border-white/30 px-5 py-2 rounded-full font-semibold">💰 बैलेंस ऐड करें</button>
-            </div>
+<main class="max-w-7xl mx-auto px-4 py-8">
+    
+    <!-- Hero Section -->
+    <div class="hero-gradient rounded-3xl p-8 md:p-12 mb-10 text-center text-white shadow-2xl animate-fade-in">
+        <div class="w-20 h-20 mx-auto bg-white/20 rounded-full flex items-center justify-center text-4xl mb-4 animate-float">🛡️</div>
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+            Cyber Hero <span class="text-yellow-300">Pro</span>
+        </h1>
+        <p class="text-base md:text-lg opacity-95 max-w-2xl mx-auto">
+            प्रोफेशनल PDF टूल्स, पासपोर्ट फोटो, ID कार्ड और भी बहुत कुछ - प्रीपेड बिजनेस मॉडल
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center mt-6">
+            <button @click="showPlanModal = true" class="bg-white text-indigo-700 px-6 py-2.5 rounded-full font-bold shadow-lg hover:scale-105 transition duration-300">
+                🚀 प्रो प्लान देखें
+            </button>
+            <button @click="showRechargeModal = true" class="bg-indigo-600/30 border border-white/30 px-6 py-2.5 rounded-full font-semibold hover:bg-indigo-600/50 transition duration-300">
+                💰 रिचार्ज करें
+            </button>
         </div>
         
-        <!-- Category Tabs -->
-        <div class="flex flex-wrap justify-center gap-2 mb-8">
-            <button @click="activeCategory = 'all'" :class="activeCategory === 'all' ? 'theme-gradient text-white shadow-md' : 'bg-white text-gray-600'" class="px-5 py-2 rounded-full font-semibold transition">🔥 सभी</button>
-            <button @click="activeCategory = 'essential'" :class="activeCategory === 'essential' ? 'theme-gradient text-white shadow-md' : 'bg-white text-gray-600'" class="px-5 py-2 rounded-full font-semibold transition">⭐ ज़रूरी</button>
-            <button @click="activeCategory = 'tools'" :class="activeCategory === 'tools' ? 'theme-gradient text-white shadow-md' : 'bg-white text-gray-600'" class="px-5 py-2 rounded-full font-semibold transition">📄 PDF टूल्स</button>
-            <button @click="activeCategory = 'print'" :class="activeCategory === 'print' ? 'theme-gradient text-white shadow-md' : 'bg-white text-gray-600'" class="px-5 py-2 rounded-full font-semibold transition">🖨️ प्रिंटिंग</button>
+        <!-- Stats Row -->
+        <div class="flex justify-center gap-6 mt-8 text-sm">
+            <div><i class="fas fa-check-circle text-green-300"></i> <span class="font-bold">50K+</span> खुश ग्राहक</div>
+            <div><i class="fas fa-check-circle text-green-300"></i> <span class="font-bold">30+</span> प्रोफेशनल टूल्स</div>
+            <div><i class="fas fa-check-circle text-green-300"></i> <span class="font-bold">24/7</span> ग्राहक सहायता</div>
         </div>
-        
-        <!-- Services Grid -->
-        <div class="space-y-10">
-            <div x-show="activeCategory === 'all' || activeCategory === 'essential'">
-                <h2 class="text-2xl font-bold mb-4">⭐ ज़रूरी सर्विसेज</h2>
-                <div class="app-grid" id="essentialGrid"></div>
-            </div>
-            
-            <div x-show="activeCategory === 'all' || activeCategory === 'tools'">
-                <h2 class="text-2xl font-bold mb-4">📄 PDF टूल्स</h2>
-                <div class="app-grid" id="toolsGrid"></div>
-            </div>
-            
-            <div x-show="activeCategory === 'all' || activeCategory === 'print'">
-                <h2 class="text-2xl font-bold mb-4">🖨️ प्रिंटिंग सर्विसेज</h2>
-                <div class="app-grid" id="printGrid"></div>
-            </div>
+    </div>
+    
+    <!-- Category Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 mb-8 animate-fade-in">
+        <button @click="activeCategory = 'all'" 
+                :class="activeCategory === 'all' ? 'hero-gradient text-white shadow-md' : 'bg-white text-gray-600 hover:bg-indigo-50 border border-gray-200'" 
+                class="px-5 py-2 rounded-full font-semibold transition-all duration-200">
+            🔥 सभी सर्विसेज
+        </button>
+        <button @click="activeCategory = 'essential'" 
+                :class="activeCategory === 'essential' ? 'hero-gradient text-white shadow-md' : 'bg-white text-gray-600 hover:bg-indigo-50 border border-gray-200'" 
+                class="px-5 py-2 rounded-full font-semibold transition-all duration-200">
+            ⭐ ज़रूरी सर्विसेज
+        </button>
+        <button @click="activeCategory = 'tools'" 
+                :class="activeCategory === 'tools' ? 'hero-gradient text-white shadow-md' : 'bg-white text-gray-600 hover:bg-indigo-50 border border-gray-200'" 
+                class="px-5 py-2 rounded-full font-semibold transition-all duration-200">
+            📄 PDF & इमेज टूल्स
+        </button>
+        <button @click="activeCategory = 'print'" 
+                :class="activeCategory === 'print' ? 'hero-gradient text-white shadow-md' : 'bg-white text-gray-600 hover:bg-indigo-50 border border-gray-200'" 
+                class="px-5 py-2 rounded-full font-semibold transition-all duration-200">
+            🖨️ प्रिंटिंग सर्विसेज
+        </button>
+    </div>
+    
+    <!-- Essential Services Grid -->
+    <div x-show="activeCategory === 'all' || activeCategory === 'essential'" class="mb-10 animate-fade-in">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold text-gray-800">⭐ ज़रूरी सर्विसेज</h2>
+            <span class="text-xs text-gray-400"><i class="fas fa-arrow-right"></i> क्लिक करें और उपयोग करें</span>
         </div>
-        
-        <!-- Transaction History -->
-        <div class="mt-12 bg-white rounded-2xl p-5 shadow-md">
-            <h3 class="font-bold mb-3">📜 पिछले ट्रांजैक्शन</h3>
-            <div class="space-y-2 max-h-48 overflow-y-auto">
-                <template x-for="tx in transactions" :key="tx.id">
-                    <div class="flex justify-between text-sm p-2 border-b" :class="tx.type === 'use' ? 'text-red-500' : 'text-green-500'">
-                        <span x-text="tx.service"></span>
-                        <span>₹<span x-text="tx.amount"></span></span>
-                        <span class="text-xs text-gray-400" x-text="tx.date"></span>
-                    </div>
-                </template>
-                <div x-show="transactions.length === 0" class="text-center text-gray-400 p-4">कोई ट्रांजैक्शन नहीं</div>
-            </div>
+        <div class="app-grid" id="essentialGrid"></div>
+    </div>
+    
+    <!-- PDF Tools Grid -->
+    <div x-show="activeCategory === 'all' || activeCategory === 'tools'" class="mb-10 animate-fade-in">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">📄 PDF & इमेज टूल्स</h2>
+        <div class="app-grid" id="toolsGrid"></div>
+    </div>
+    
+    <!-- Printing Services Grid -->
+    <div x-show="activeCategory === 'all' || activeCategory === 'print'" class="mb-10 animate-fade-in">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">🖨️ प्रिंटिंग सर्विसेज</h2>
+        <div class="app-grid" id="printGrid"></div>
+    </div>
+    
+    <!-- Features Section -->
+    <div class="grid md:grid-cols-4 gap-4 mt-10 animate-fade-in">
+        <div class="bg-white rounded-2xl p-4 text-center shadow hover:shadow-lg transition duration-300 group">
+            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 text-xl mx-auto mb-3 group-hover:scale-110 transition">⚡</div>
+            <h3 class="font-bold text-gray-800">तेज़ और आसान</h3>
+            <p class="text-xs text-gray-500 mt-1">कुछ ही सेकंड में काम पूरा</p>
         </div>
+        <div class="bg-white rounded-2xl p-4 text-center shadow hover:shadow-lg transition duration-300 group">
+            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-green-600 text-xl mx-auto mb-3 group-hover:scale-110 transition">💰</div>
+            <h3 class="font-bold text-gray-800">प्रीपेड मॉडल</h3>
+            <p class="text-xs text-gray-500 mt-1">जितना उपयोग उतना पैसा</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 text-center shadow hover:shadow-lg transition duration-300 group">
+            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-xl mx-auto mb-3 group-hover:scale-110 transition">🛡️</div>
+            <h3 class="font-bold text-gray-800">100% सुरक्षित</h3>
+            <p class="text-xs text-gray-500 mt-1">डेटा पूरी तरह सुरक्षित</p>
+        </div>
+        <div class="bg-white rounded-2xl p-4 text-center shadow hover:shadow-lg transition duration-300 group">
+            <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 text-xl mx-auto mb-3 group-hover:scale-110 transition">📞</div>
+            <h3 class="font-bold text-gray-800">24/7 सहायता</h3>
+            <p class="text-xs text-gray-500 mt-1">हर समय मदद उपलब्ध</p>
+        </div>
+    </div>
+    
+    <!-- Transaction History -->
+    <div class="mt-10 bg-white rounded-2xl p-5 shadow" x-show="currentUser && transactions.length > 0">
+        <h3 class="font-bold mb-3 flex items-center gap-2"><i class="fas fa-history text-gray-500"></i> पिछले ट्रांजैक्शन</h3>
+        <div class="space-y-2 max-h-48 overflow-y-auto">
+            <template x-for="tx in transactions.slice(0,8)" :key="tx.id">
+                <div class="flex justify-between text-sm p-2 border-b hover:bg-gray-50 rounded-lg" :class="tx.type === 'use' ? 'text-red-500' : 'text-green-500'">
+                    <span><i class="fas" :class="tx.type === 'use' ? 'fa-arrow-down' : 'fa-arrow-up'"></i> <span x-text="tx.service"></span></span>
+                    <span class="font-semibold">₹<span x-text="tx.amount"></span></span>
+                    <span class="text-xs text-gray-400" x-text="tx.date"></span>
+                </div>
+            </template>
+        </div>
+    </div>
+    
+    <!-- No Data Message -->
+    <div class="text-center py-10" x-show="currentUser && transactions.length === 0">
+        <i class="fas fa-rocket text-4xl text-gray-300 mb-3"></i>
+        <p class="text-gray-400">अभी तक कोई ट्रांजैक्शन नहीं</p>
+        <button @click="showRechargeModal = true" class="mt-3 text-indigo-600 text-sm font-semibold">→ पहली बार रिचार्ज करें</button>
+    </div>
+    
+    <!-- Welcome for Guest -->
+    <div class="text-center py-10" x-show="!currentUser">
+        <i class="fas fa-user-astronaut text-4xl text-gray-300 mb-3"></i>
+        <p class="text-gray-400">सभी टूल्स का उपयोग करने के लिए लॉगिन करें</p>
+        <button @click="showAuthModal = true" class="mt-3 bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-indigo-700 transition">
+            🔐 लॉगिन करें
+        </button>
     </div>
 </main>
 
-<!-- Floating Action Buttons -->
-<div class="fixed bottom-6 right-5 flex flex-col gap-3">
-    <button @click="window.scrollTo({top:0,behavior:'smooth'})" class="w-12 h-12 bg-orange-500 text-white rounded-full shadow-lg"><i class="fas fa-arrow-up"></i></button>
-    <button @click="showAddBalanceModal = true" class="w-12 h-12 bg-green-500 text-white rounded-full shadow-lg"><i class="fas fa-wallet"></i></button>
+<!-- ============================================ -->
+<!-- FOOTER -->
+<!-- ============================================ -->
+<footer class="bg-gray-900 text-gray-400 mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <div class="flex flex-wrap justify-center gap-6 mb-6">
+            <a href="#" class="hover:text-white transition text-sm">🏠 होम</a>
+            <a href="#" class="hover:text-white transition text-sm">📜 प्राइवेसी पॉलिसी</a>
+            <a href="#" class="hover:text-white transition text-sm">⚖️ टर्म्स & कंडीशंस</a>
+            <a href="#" class="hover:text-white transition text-sm">💰 रिफंड पॉलिसी</a>
+            <a href="#" class="hover:text-white transition text-sm">📞 संपर्क करें</a>
+        </div>
+        
+        <div class="flex justify-center gap-4 mb-6">
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition transform hover:scale-110">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition transform hover:scale-110">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition transform hover:scale-110">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition transform hover:scale-110">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-600 transition transform hover:scale-110">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        
+        <p class="text-sm">© 2024 Cyber Hero | Developed with <i class="fas fa-heart text-red-500"></i> by <span class="text-orange-400 font-semibold">Tejsingh Kaneriya</span></p>
+        <p class="text-xs text-gray-600 mt-2">
+            <i class="fas fa-phone-alt"></i> +91 8435485447 | 
+            <i class="fas fa-envelope"></i> tejsingh@cyberhero.com
+        </p>
+        <p class="text-[10px] text-gray-700 mt-3">
+            ⚠️ डेमो वर्जन - सभी ट्रांजैक्शन आपके ब्राउज़र (localStorage) में सेव होते हैं
+        </p>
+    </div>
+</footer>
+
+<!-- ============================================ -->
+<!-- FLOATING ACTION BUTTONS -->
+<!-- ============================================ -->
+<div class="fixed bottom-6 right-5 flex flex-col gap-3 z-40">
+    <button @click="window.scrollTo({top:0,behavior:'smooth'})" 
+            class="w-12 h-12 bg-indigo-600 text-white rounded-full shadow-lg hover:scale-110 transition duration-200 hover:bg-indigo-700"
+            title="ऊपर जाएँ">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <button @click="showRechargeModal = true" x-show="currentUser" 
+            class="w-12 h-12 bg-green-600 text-white rounded-full shadow-lg hover:scale-110 transition duration-200 hover:bg-green-700 animate-bounce"
+            title="रिचार्ज करें">
+        <i class="fas fa-wallet"></i>
+    </button>
+    
+    <button @click="showAuthModal = true" x-show="!currentUser" 
+            class="w-12 h-12 bg-indigo-600 text-white rounded-full shadow-lg hover:scale-110 transition duration-200"
+            title="लॉगिन करें">
+        <i class="fas fa-user"></i>
+    </button>
 </div>
 
 <script>
-    function app() {
-        return {
-            // State variables
-            currentUser: null,
-            allUsers: {},
-            servicesData: [],
-            userBalance: 0,
-            userPlan: 'free',
-            transactions: [],
-            toastMessage: '',
-            showAuthModal: false,
-            showPlanModal: false,
-            showAddBalanceModal: false,
-            showAdminPanel: false,
-            authMode: 'login',
-            authEmail: '',
-            authPassword: '',
-            authLoading: false,
-            selectedPlan: 'monthly',
-            addAmountValue: 500,
-            customAmount: '',
-            activeCategory: 'all',
-            mobileMenuOpen: false,
-            userMenuOpen: false,
-            
-            // New service form
-            newService: { name: '', cat: 'essential', icon: 'fa-file-pdf', pricing: 'free', desc: '', active: true },
-            
-            initApp() {
-                this.loadData();
+// ============================================
+// COMPLETE APP LOGIC - CYBER HERO BUSINESS SYSTEM
+// ============================================
+
+function app() {
+    return {
+        // ========== USER DATA ==========
+        currentUser: null,
+        allUsers: {},
+        userBalance: 0,
+        userPlan: 'free',
+        transactions: [],
+        allTransactions: [],
+        
+        // ========== UI STATE ==========
+        toastMessage: '',
+        loading: false,
+        showAuthModal: false,
+        showRechargeModal: false,
+        showPlanModal: false,
+        showAdminPanel: false,
+        authMode: 'login',
+        authEmail: '',
+        authPassword: '',
+        authLoading: false,
+        selectedPlan: 'monthly',
+        rechargeAmount: 500,
+        customRecharge: '',
+        activeCategory: 'all',
+        mobileMenuOpen: false,
+        userMenuOpen: false,
+        
+        // ========== ADMIN DATA ==========
+        servicesData: [],
+        newService: { name: '', cat: 'essential', icon: 'fa-file-pdf', pricing: 'free', desc: '', pricePerUse: 5 },
+        planPrices: { monthly: 299, yearly: 2499 },
+        totalRevenue: 0,
+        
+        // ========== INITIALIZATION ==========
+        initApp() {
+            this.loadData();
+            setTimeout(() => {
                 this.renderServices();
-                this.showToast('👋 स्वागत है! अकाउंट बनाएँ या लॉगिन करें');
-                setTimeout(() => { if(!this.currentUser) this.showAuthModal = true; }, 500);
-            },
+                if(!this.currentUser) {
+                    setTimeout(() => { this.showAuthModal = true; }, 800);
+                }
+                this.showToast('🛡️ Cyber Hero में आपका स्वागत है!');
+            }, 100);
+        },
+        
+        // ========== DATA LOADING ==========
+        loadData() {
+            // Load Users from localStorage
+            const savedUsers = localStorage.getItem('cyberhero_users');
+            if(savedUsers) {
+                this.allUsers = JSON.parse(savedUsers);
+            } else {
+                this.allUsers = {
+                    'admin1': { id: 'admin1', email: 'admin@cyberhero.com', password: 'admin123', balance: 0, plan: 'free', role: 'admin' },
+                    'user1': { id: 'user1', email: 'user@cyberhero.com', password: '123456', balance: 50, plan: 'free', role: 'user' },
+                    'pro1': { id: 'pro1', email: 'pro@cyberhero.com', password: '123456', balance: 500, plan: 'pro', role: 'user' }
+                };
+                this.saveUsers();
+            }
             
-            loadData() {
-                // Load users
-                const savedUsers = localStorage.getItem('akprinthub_users');
-                if(savedUsers) {
-                    this.allUsers = JSON.parse(savedUsers);
-                } else {
-                    this.allUsers = {
-                        'user1': { id: 'user1', email: 'user@akprinthub.com', password: '123456', balance: 50, plan: 'free', role: 'user', createdAt: new Date().toISOString() },
-                        'pro1': { id: 'pro1', email: 'pro@akprinthub.com', password: '123456', balance: 500, plan: 'pro', planExpiry: new Date(Date.now() + 30*86400000).toISOString(), role: 'user', createdAt: new Date().toISOString() },
-                        'admin1': { id: 'admin1', email: 'admin@akprinthub.com', password: 'admin123', balance: 0, plan: 'free', role: 'admin', createdAt: new Date().toISOString() }
-                    };
-                    this.saveUsers();
-                }
-                
-                // Load services
-                const savedServices = localStorage.getItem('akprinthub_services');
-                if(savedServices) {
-                    this.servicesData = JSON.parse(savedServices);
-                } else {
-                    this.servicesData = [
-                        { id: 'jpg-to-pdf', name: 'JPG to PDF', icon: 'fa-file-pdf', cat: 'tools', pricing: 'free', desc: 'फोटो को PDF में बदलें', active: true, pricePerUse: 0 },
-                        { id: 'pdf-to-jpg', name: 'PDF to JPG', icon: 'fa-image', cat: 'tools', pricing: 'free', desc: 'PDF से इमेज बनाएँ', active: true, pricePerUse: 0 },
-                        { id: 'merge-pdf', name: 'Merge PDF', icon: 'fa-object-group', cat: 'tools', pricing: 'pro', desc: 'कई PDF को मर्ज करें (प्रो)', active: true, pricePerUse: 5 },
-                        { id: 'passport-photo', name: 'पासपोर्ट फोटो', icon: 'fa-user-tie', cat: 'essential', pricing: 'free', desc: 'पासपोर्ट साइज फोटो बनाएँ', active: true, pricePerUse: 0 },
-                        { id: 'id-card', name: 'ID कार्ड प्रिंट', icon: 'fa-id-card', cat: 'print', pricing: 'pro', desc: 'प्रोफेशनल ID कार्ड (प्रो)', active: true, pricePerUse: 10 },
-                        { id: 'resume', name: 'रिज्यूम बनाएँ', icon: 'fa-file-alt', cat: 'essential', pricing: 'free', desc: 'प्रोफेशनल CV बनाएँ', active: true, pricePerUse: 0 },
-                        { id: 'aadhaar-print', name: 'आधार कार्ड', icon: 'fa-fingerprint', cat: 'print', pricing: 'free', desc: 'आधार कार्ड प्रिंट', active: true, pricePerUse: 0 },
-                        { id: 'pro-resume', name: 'प्रो रिज्यूम', icon: 'fa-file-contract', cat: 'essential', pricing: 'pro', desc: 'प्रीमियम रिज्यूम टेम्पलेट्स (प्रो)', active: true, pricePerUse: 15 },
-                        { id: 'bulk-pdf', name: 'बल्क PDF टूल', icon: 'fa-layer-group', cat: 'tools', pricing: 'pro', desc: 'एक साथ 100 फाइल्स (प्रो)', active: true, pricePerUse: 20 }
-                    ];
-                    this.saveServices();
-                }
-                
-                // Check session
-                const session = sessionStorage.getItem('akprinthub_session');
-                if(session) {
-                    const userData = JSON.parse(session);
-                    const user = this.allUsers[userData.userId];
+            // Load Services
+            const savedServices = localStorage.getItem('cyberhero_services');
+            if(savedServices) {
+                this.servicesData = JSON.parse(savedServices);
+            } else {
+                this.servicesData = [
+                    { id: 'jpg-to-pdf', name: 'JPG to PDF', icon: 'fa-file-pdf', cat: 'tools', pricing: 'free', desc: 'फोटो को PDF में बदलें', active: true, pricePerUse: 0 },
+                    { id: 'pdf-to-jpg', name: 'PDF to JPG', icon: 'fa-image', cat: 'tools', pricing: 'free', desc: 'PDF से इमेज बनाएँ', active: true, pricePerUse: 0 },
+                    { id: 'merge-pdf', name: 'Merge PDF', icon: 'fa-object-group', cat: 'tools', pricing: 'pro', desc: 'कई PDF को मर्ज करें', active: true, pricePerUse: 5 },
+                    { id: 'delete-pdf', name: 'Delete PDF Pages', icon: 'fa-trash', cat: 'tools', pricing: 'pro', desc: 'PDF से पेज हटाएँ', active: true, pricePerUse: 3 },
+                    { id: 'passport-photo', name: 'पासपोर्ट फोटो', icon: 'fa-user-tie', cat: 'essential', pricing: 'free', desc: 'पासपोर्ट साइज फोटो बनाएँ', active: true, pricePerUse: 0 },
+                    { id: 'id-card', name: 'ID कार्ड प्रिंट', icon: 'fa-id-card', cat: 'print', pricing: 'pro', desc: 'प्रोफेशनल ID कार्ड', active: true, pricePerUse: 10 },
+                    { id: 'resume', name: 'रिज्यूम बनाएँ', icon: 'fa-file-alt', cat: 'essential', pricing: 'free', desc: 'प्रोफेशनल CV बनाएँ', active: true, pricePerUse: 0 },
+                    { id: 'aadhaar-print', name: 'आधार कार्ड', icon: 'fa-fingerprint', cat: 'print', pricing: 'free', desc: 'आधार कार्ड प्रिंट', active: true, pricePerUse: 0 },
+                    { id: 'pro-resume', name: 'प्रो रिज्यूम', icon: 'fa-file-contract', cat: 'essential', pricing: 'pro', desc: 'प्रीमियम CV टेम्पलेट्स', active: true, pricePerUse: 15 },
+                    { id: 'bulk-pdf', name: 'बल्क PDF टूल', icon: 'fa-layer-group', cat: 'tools', pricing: 'pro', desc: 'एक साथ 100 फाइल्स प्रोसेस', active: true, pricePerUse: 20 }
+                ];
+                this.saveServices();
+            }
+            
+            // Load Plan Prices
+            const savedPlans = localStorage.getItem('cyberhero_plans');
+            if(savedPlans) {
+                this.planPrices = JSON.parse(savedPlans);
+            }
+            
+            // Load All Transactions
+            const savedAllTx = localStorage.getItem('cyberhero_all_transactions');
+            this.allTransactions = savedAllTx ? JSON.parse(savedAllTx) : [];
+            this.totalRevenue = this.allTransactions.filter(t => t.type === 'use').reduce((sum, t) => sum + t.amount, 0);
+            
+            // Check Session
+            const session = localStorage.getItem('cyberhero_session');
+            if(session && this.allUsers[session]) {
+                const user = this.allUsers[session];
+                this.currentUser = user;
+                this.userBalance = user.balance;
+                this.userPlan = user.plan;
+                this.loadUserTransactions(user.id);
+            }
+        },
+        
+        // ========== SAVE FUNCTIONS ==========
+        saveUsers() { localStorage.setItem('cyberhero_users', JSON.stringify(this.allUsers)); },
+        saveServices() { localStorage.setItem('cyberhero_services', JSON.stringify(this.servicesData)); },
+        savePlanPrices() { localStorage.setItem('cyberhero_plans', JSON.stringify(this.planPrices)); },
+        
+        saveAllTransaction(tx) {
+            this.allTransactions.unshift(tx);
+            localStorage.setItem('cyberhero_all_transactions', JSON.stringify(this.allTransactions.slice(0,500)));
+            this.totalRevenue = this.allTransactions.filter(t => t.type === 'use').reduce((sum, t) => sum + t.amount, 0);
+        },
+        
+        loadUserTransactions(userId) {
+            const saved = localStorage.getItem(`cyberhero_tx_${userId}`);
+            this.transactions = saved ? JSON.parse(saved) : [];
+        },
+        
+        saveUserTransactions() {
+            if(this.currentUser) {
+                localStorage.setItem(`cyberhero_tx_${this.currentUser.id}`, JSON.stringify(this.transactions));
+            }
+        },
+        
+        addTransaction(service, amount, type) {
+            const tx = { 
+                id: Date.now(), 
+                service, 
+                amount, 
+                type, 
+                date: new Date().toLocaleString('hi-IN'), 
+                userId: this.currentUser?.id, 
+                userEmail: this.currentUser?.email 
+            };
+            this.transactions.unshift(tx);
+            this.saveUserTransactions();
+            this.saveAllTransaction(tx);
+        },
+        
+        // ========== UI HELPERS ==========
+        showToast(msg) {
+            this.toastMessage = msg;
+            setTimeout(() => { this.toastMessage = ''; }, 3000);
+        },
+        
+        // ========== AUTHENTICATION ==========
+        handleAuth() {
+            if(!this.authEmail || !this.authPassword) {
+                this.showToast('कृपया ईमेल और पासवर्ड भरें');
+                return;
+            }
+            this.authLoading = true;
+            
+            setTimeout(() => {
+                if(this.authMode === 'login') {
+                    const user = Object.values(this.allUsers).find(u => u.email === this.authEmail && u.password === this.authPassword);
                     if(user) {
                         this.currentUser = user;
                         this.userBalance = user.balance;
                         this.userPlan = user.plan;
+                        localStorage.setItem('cyberhero_session', user.id);
                         this.loadUserTransactions(user.id);
-                    }
-                }
-            },
-            
-            saveUsers() { localStorage.setItem('akprinthub_users', JSON.stringify(this.allUsers)); },
-            saveServices() { localStorage.setItem('akprinthub_services', JSON.stringify(this.servicesData)); },
-            
-            saveUserTransactions(userId, transactions) {
-                localStorage.setItem(`akprinthub_tx_${userId}`, JSON.stringify(transactions));
-            },
-            loadUserTransactions(userId) {
-                const saved = localStorage.getItem(`akprinthub_tx_${userId}`);
-                this.transactions = saved ? JSON.parse(saved) : [];
-            },
-            addTransaction(service, amount, type) {
-                const tx = { id: Date.now(), service, amount, type, date: new Date().toLocaleString() };
-                this.transactions.unshift(tx);
-                localStorage.setItem(`akprinthub_tx_${this.currentUser.id}`, JSON.stringify(this.transactions));
-            },
-            
-            showToast(msg) {
-                this.toastMessage = msg;
-                setTimeout(() => { this.toastMessage = ''; }, 3000);
-            },
-            
-            handleAuth() {
-                if(!this.authEmail || !this.authPassword) {
-                    this.showToast('कृपया ईमेल और पासवर्ड भरें');
-                    return;
-                }
-                this.authLoading = true;
-                
-                setTimeout(() => {
-                    if(this.authMode === 'login') {
-                        const user = Object.values(this.allUsers).find(u => u.email === this.authEmail && u.password === this.authPassword);
-                        if(user) {
-                            this.currentUser = user;
-                            this.userBalance = user.balance;
-                            this.userPlan = user.plan;
-                            sessionStorage.setItem('akprinthub_session', JSON.stringify({ userId: user.id }));
-                            this.loadUserTransactions(user.id);
-                            this.showToast(`🚀 स्वागत है ${user.email}!`);
-                            this.showAuthModal = false;
-                        } else {
-                            this.showToast('❌ गलत ईमेल या पासवर्ड');
-                        }
+                        this.showToast(`🚀 स्वागत है ${user.email}!`);
+                        this.showAuthModal = false;
+                        this.renderServices();
                     } else {
-                        // Register
-                        if(this.allUsers[this.authEmail]) {
-                            this.showToast('यह ईमेल पहले से रजिस्टर है');
-                        } else {
-                            const newId = 'user_' + Date.now();
-                            const newUser = { id: newId, email: this.authEmail, password: this.authPassword, balance: 20, plan: 'free', role: 'user', createdAt: new Date().toISOString() };
-                            this.allUsers[newId] = newUser;
-                            this.saveUsers();
-                            this.currentUser = newUser;
-                            this.userBalance = 20;
-                            this.userPlan = 'free';
-                            sessionStorage.setItem('akprinthub_session', JSON.stringify({ userId: newId }));
-                            this.showToast('🎉 अकाउंट बन गया! ₹20 फ्री बैलेंस मिला');
-                            this.showAuthModal = false;
-                        }
-                    }
-                    this.authLoading = false;
-                    this.authEmail = '';
-                    this.authPassword = '';
-                }, 500);
-            },
-            
-            logout() {
-                sessionStorage.removeItem('akprinthub_session');
-                this.currentUser = null;
-                this.userBalance = 0;
-                this.userPlan = 'free';
-                this.transactions = [];
-                this.showToast('लॉगआउट हो गया');
-                setTimeout(() => { this.showAuthModal = true; }, 500);
-            },
-            
-            useTool(service) {
-                if(!this.currentUser) {
-                    this.showToast('कृपया पहले लॉगिन करें');
-                    this.showAuthModal = true;
-                    return;
-                }
-                
-                if(!service.active) {
-                    this.showToast('यह सर्विस फिलहाल उपलब्ध नहीं है');
-                    return;
-                }
-                
-                // Pro plan users get all tools free
-                if(this.userPlan === 'pro') {
-                    this.showToast(`✨ ${service.name} का उपयोग कर रहे हैं (प्रो प्लान - फ्री)`);
-                    return;
-                }
-                
-                const cost = service.pricing === 'pro' ? (service.pricePerUse || 5) : 0;
-                
-                if(cost > 0) {
-                    if(this.userBalance >= cost) {
-                        this.userBalance -= cost;
-                        this.currentUser.balance = this.userBalance;
-                        this.allUsers[this.currentUser.id].balance = this.userBalance;
-                        this.saveUsers();
-                        this.addTransaction(service.name, cost, 'use');
-                        this.showToast(`✅ ${service.name} का उपयोग किया! ₹${cost} कट गया। बचा बैलेंस: ₹${this.userBalance}`);
-                        alert(`🪄 ${service.name} टूल का उपयोग किया!\n\n💸 ₹${cost} कट गया\n💰 बचा बैलेंस: ₹${this.userBalance}\n\n⚠️ (डेमो मोड - असली टूल नहीं चलता)`);
-                    } else {
-                        this.showToast(`❌ बैलेंस कम है! ${service.name} के लिए ₹${cost} चाहिए। कृपया बैलेंस ऐड करें।`);
-                        setTimeout(() => { this.showAddBalanceModal = true; }, 1000);
+                        this.showToast('❌ गलत ईमेल या पासवर्ड');
                     }
                 } else {
-                    this.showToast(`✅ ${service.name} (मुफ्त टूल) का उपयोग कर रहे हैं`);
-                    alert(`🪄 ${service.name} - मुफ्त टूल!\n\n(डेमो मोड - असली टूल नहीं चलता)`);
+                    // Register new user
+                    if(Object.values(this.allUsers).some(u => u.email === this.authEmail)) {
+                        this.showToast('यह ईमेल पहले से रजिस्टर है');
+                    } else {
+                        const newId = 'user_' + Date.now();
+                        const newUser = { 
+                            id: newId, 
+                            email: this.authEmail, 
+                            password: this.authPassword, 
+                            balance: 30, 
+                            plan: 'free', 
+                            role: 'user',
+                            createdAt: new Date().toISOString()
+                        };
+                        this.allUsers[newId] = newUser;
+                        this.saveUsers();
+                        this.currentUser = newUser;
+                        this.userBalance = 30;
+                        this.userPlan = 'free';
+                        localStorage.setItem('cyberhero_session', newId);
+                        this.showToast('🎉 अकाउंट बन गया! ₹30 फ्री बैलेंस मिला');
+                        this.showAuthModal = false;
+                        this.renderServices();
+                    }
                 }
-            },
+                this.authLoading = false;
+                this.authEmail = '';
+                this.authPassword = '';
+            }, 500);
+        },
+        
+        logout() {
+            localStorage.removeItem('cyberhero_session');
+            this.currentUser = null;
+            this.userBalance = 0;
+            this.userPlan = 'free';
+            this.transactions = [];
+            this.showToast('लॉगआउट हो गया');
+            this.renderServices();
+            setTimeout(() => { this.showAuthModal = true; }, 500);
+        },
+        
+        // ========== TOOL USAGE ==========
+        useTool(service) {
+            if(!this.currentUser) {
+                this.showToast('कृपया पहले लॉगिन करें');
+                this.showAuthModal = true;
+                return;
+            }
             
-            upgradeToPro() {
-                const cost = this.selectedPlan === 'monthly' ? 299 : 2499;
+            if(!service.active) {
+                this.showToast('यह सर्विस फिलहाल उपलब्ध नहीं है');
+                return;
+            }
+            
+            // Pro plan users get all tools free
+            if(this.userPlan === 'pro') {
+                this.showToast(`✨ ${service.name} (प्रो प्लान - फ्री)`);
+                alert(`🛡️ ${service.name}\n\n✨ प्रो प्लान के कारण फ्री में उपयोग कर रहे हैं!`);
+                return;
+            }
+            
+            const cost = service.pricing === 'pro' ? (service.pricePerUse || 5) : 0;
+            
+            if(cost > 0) {
                 if(this.userBalance >= cost) {
                     this.userBalance -= cost;
                     this.currentUser.balance = this.userBalance;
-                    this.userPlan = 'pro';
-                    this.currentUser.plan = 'pro';
-                    this.currentUser.planExpiry = new Date(Date.now() + (this.selectedPlan === 'monthly' ? 30 : 365) * 86400000).toISOString();
-                    this.allUsers[this.currentUser.id] = this.currentUser;
+                    this.allUsers[this.currentUser.id].balance = this.userBalance;
                     this.saveUsers();
-                    this.addTransaction(`प्रो प्लान (${this.selectedPlan})`, cost, 'plan');
-                    this.showToast(`🎉 प्रो प्लान एक्टिव! अब सभी प्रो टूल्स मुफ्त!`);
-                    this.showPlanModal = false;
+                    this.addTransaction(service.name, cost, 'use');
+                    this.showToast(`✅ ${service.name} इस्तेमाल किया! ₹${cost} कट गया`);
+                    alert(`🛡️ ${service.name}\n\n💸 कटौती: ₹${cost}\n💰 बचा बैलेंस: ₹${this.userBalance}`);
                 } else {
-                    this.showToast(`❌ बैलेंस कम है! ₹${cost} चाहिए। कृपया बैलेंस ऐड करें।`);
-                    setTimeout(() => { this.showAddBalanceModal = true; }, 1000);
+                    this.showToast(`❌ बैलेंस कम है! ${service.name} के लिए ₹${cost} चाहिए। कृपया रिचार्ज करें।`);
+                    setTimeout(() => { this.showRechargeModal = true; }, 1000);
                 }
-            },
-            
-            confirmAddBalance() {
-                let amount = this.customAmount ? parseInt(this.customAmount) : this.addAmountValue;
-                if(amount <= 0) { this.showToast('कृपया सही राशि डालें'); return; }
-                
-                this.userBalance += amount;
+            } else {
+                this.showToast(`✅ ${service.name} (मुफ्त टूल)`);
+                alert(`🛡️ ${service.name} - मुफ्त टूल!\n\n(डेमो मोड - असली टूल नहीं चलता)`);
+            }
+        },
+        
+        // ========== PRO PLAN UPGRADE ==========
+        upgradeToPro() {
+            const cost = this.selectedPlan === 'monthly' ? this.planPrices.monthly : this.planPrices.yearly;
+            if(this.userBalance >= cost) {
+                this.userBalance -= cost;
                 this.currentUser.balance = this.userBalance;
-                this.allUsers[this.currentUser.id].balance = this.userBalance;
+                this.userPlan = 'pro';
+                this.currentUser.plan = 'pro';
+                this.currentUser.planExpiry = new Date(Date.now() + (this.selectedPlan === 'monthly' ? 30 : 365) * 86400000).toISOString();
+                this.allUsers[this.currentUser.id] = this.currentUser;
                 this.saveUsers();
-                this.addTransaction('बैलेंस ऐड', amount, 'add');
-                this.showToast(`💰 ₹${amount} बैलेंस ऐड हो गया! नया बैलेंस: ₹${this.userBalance}`);
-                this.showAddBalanceModal = false;
-                this.customAmount = '';
-                // Generate QR for demo
-                setTimeout(() => this.generatePaymentQR(amount), 100);
-            },
+                this.addTransaction(`प्रो प्लान (${this.selectedPlan === 'monthly' ? 'मासिक' : 'सालाना'})`, cost, 'plan');
+                this.showToast(`🎉 प्रो प्लान एक्टिव हो गया! अब सभी प्रो टूल्स मुफ्त`);
+                this.showPlanModal = false;
+                this.renderServices();
+            } else {
+                this.showToast(`❌ बैलेंस कम है! ₹${cost} चाहिए। कृपया रिचार्ज करें।`);
+                setTimeout(() => { this.showRechargeModal = true; }, 1000);
+            }
+        },
+        
+        // ========== RECHARGE / ADD BALANCE ==========
+        confirmRecharge() {
+            let amount = this.customRecharge ? parseInt(this.customRecharge) : this.rechargeAmount;
+            if(amount <= 0 || isNaN(amount)) { 
+                this.showToast('कृपया सही राशि डालें'); 
+                return; 
+            }
             
-            generatePaymentQR(amount) {
-                const canvas = document.getElementById('paymentQrCanvas');
-                if(canvas && typeof QRious !== 'undefined') {
-                    const upiUrl = `upi://pay?pa=akprinthub@okhdfcbank&pn=AK%20Print%20Hub&am=${amount}&cu=INR`;
-                    new QRious({ element: canvas, size: 150, value: upiUrl });
-                }
-            },
-            
-            adminAddBalance(userId) {
-                this.allUsers[userId].balance += 100;
+            this.userBalance += amount;
+            this.currentUser.balance = this.userBalance;
+            this.allUsers[this.currentUser.id].balance = this.userBalance;
+            this.saveUsers();
+            this.addTransaction('रिचार्ज', amount, 'add');
+            this.showToast(`💰 ₹${amount} रिचार्ज हो गया! नया बैलेंस: ₹${this.userBalance}`);
+            this.showRechargeModal = false;
+            this.customRecharge = '';
+            this.generateRechargeQR(amount);
+        },
+        
+        generateRechargeQR(amount) {
+            const canvas = document.getElementById('rechargeQrCanvas');
+            if(canvas && typeof QRious !== 'undefined') {
+                const upiUrl = `upi://pay?pa=cyberhero@okhdfcbank&pn=Cyber%20Hero&am=${amount}&cu=INR`;
+                new QRious({ element: canvas, size: 160, value: upiUrl });
+            }
+        },
+        
+        // ========== ADMIN FUNCTIONS ==========
+        adminAddBalance(userId, amount) {
+            this.allUsers[userId].balance += amount;
+            this.saveUsers();
+            if(this.currentUser && this.currentUser.id === userId) {
+                this.userBalance = this.allUsers[userId].balance;
+            }
+            this.showToast(`✅ ${this.allUsers[userId].email} को ₹${amount} ऐड किए गए`);
+        },
+        
+        adminSetPlan(userId, plan) {
+            this.allUsers[userId].plan = plan;
+            this.saveUsers();
+            if(this.currentUser && this.currentUser.id === userId) {
+                this.userPlan = plan;
+            }
+            this.showToast(`✅ ${this.allUsers[userId].email} का प्लान ${plan === 'pro' ? 'प्रो' : 'फ्री'} कर दिया गया`);
+        },
+        
+        deleteUser(userId) {
+            if(confirm('क्या आप इस यूजर को डिलीट करना चाहते हैं?')) {
+                delete this.allUsers[userId];
                 this.saveUsers();
-                this.showToast(`✅ ${this.allUsers[userId].email} को ₹100 ऐड किए`);
-            },
+                this.showToast('🗑️ यूजर डिलीट कर दिया गया');
+            }
+        },
+        
+        updatePlanPrices() {
+            this.savePlanPrices();
+            this.showToast('✅ प्लान की कीमतें अपडेट हो गईं');
+        },
+        
+        addNewService() {
+            if(!this.newService.name) { 
+                this.showToast('सर्विस का नाम भरें'); 
+                return; 
+            }
             
-            addNewService() {
-                if(!this.newService.name) { this.showToast('सर्विस का नाम भरें'); return; }
-                const newId = 'service_' + Date.now();
-                this.servicesData.push({
-                    id: newId,
-                    name: this.newService.name,
-                    icon: this.newService.icon || 'fa-cube',
-                    cat: this.newService.cat,
-                    pricing: this.newService.pricing,
-                    desc: this.newService.desc || this.newService.name,
-                    active: true,
-                    pricePerUse: this.newService.pricing === 'pro' ? 5 : 0
-                });
+            const newId = 'service_' + Date.now();
+            this.servicesData.push({
+                id: newId,
+                name: this.newService.name,
+                icon: this.newService.icon || 'fa-cube',
+                cat: this.newService.cat,
+                pricing: this.newService.pricing,
+                desc: this.newService.desc || this.newService.name,
+                active: true,
+                pricePerUse: this.newService.pricing === 'pro' ? (this.newService.pricePerUse || 5) : 0
+            });
+            this.saveServices();
+            this.renderServices();
+            this.newService = { name: '', cat: 'essential', icon: 'fa-file-pdf', pricing: 'free', desc: '', pricePerUse: 5 };
+            this.showToast('✅ नई सर्विस ऐड हो गई!');
+        },
+        
+        editServicePrice(idx) {
+            const newPrice = prompt('नई कीमत (₹ में) दर्ज करें:', this.servicesData[idx].pricePerUse);
+            if(newPrice && !isNaN(newPrice) && newPrice >= 0) {
+                this.servicesData[idx].pricePerUse = parseInt(newPrice);
                 this.saveServices();
                 this.renderServices();
-                this.newService = { name: '', cat: 'essential', icon: 'fa-file-pdf', pricing: 'free', desc: '', active: true };
-                this.showToast('✅ नई सर्विस ऐड हो गई!');
-            },
-            
-            toggleServiceStatus(index) {
-                this.servicesData[index].active = !this.servicesData[index].active;
+                this.showToast('✅ कीमत अपडेट हो गई');
+            }
+        },
+        
+        toggleServiceStatus(idx) {
+            this.servicesData[idx].active = !this.servicesData[idx].active;
+            this.saveServices();
+            this.renderServices();
+            this.showToast(this.servicesData[idx].active ? '✅ सर्विस एक्टिव हो गई' : '⛔ सर्विस बंद कर दी गई');
+        },
+        
+        deleteService(idx) {
+            if(confirm('क्या आप यह सर्विस डिलीट करना चाहते हैं?')) {
+                this.servicesData.splice(idx, 1);
                 this.saveServices();
                 this.renderServices();
-            },
+                this.showToast('🗑️ सर्विस डिलीट कर दी गई');
+            }
+        },
+        
+        // ========== RENDER SERVICES ==========
+        renderServices() {
+            const essentialGrid = document.getElementById('essentialGrid');
+            const toolsGrid = document.getElementById('toolsGrid');
+            const printGrid = document.getElementById('printGrid');
             
-            deleteService(index) {
-                if(confirm('क्या आप यह सर्विस डिलीट करना चाहते हैं?')) {
-                    this.servicesData.splice(index, 1);
-                    this.saveServices();
-                    this.renderServices();
-                    this.showToast('🗑️ सर्विस डिलीट कर दी गई');
-                }
-            },
-            
-            renderServices() {
-                const essentialGrid = document.getElementById('essentialGrid');
-                const toolsGrid = document.getElementById('toolsGrid');
-                const printGrid = document.getElementById('printGrid');
-                
-                const createCardHTML = (service) => `
-                    <div class="service-card p-4 text-center relative ${service.pricing === 'pro' && this.userPlan !== 'pro' ? 'cursor-pointer' : ''}" onclick="window.__app.useTool(${JSON.stringify(service).replace(/"/g, '&quot;')})">
-                        ${service.pricing === 'pro' && this.userPlan !== 'pro' ? '<div class="absolute top-2 right-2 pro-badge text-white text-[9px] px-2 py-0.5 rounded-full"><i class="fas fa-crown mr-0.5"></i>प्रो</div>' : ''}
-                        ${service.pricing === 'pro' && this.userPlan !== 'pro' ? '<div class="lock-overlay absolute inset-0 rounded-2xl flex items-center justify-center opacity-0 hover:opacity-100 transition"><i class="fas fa-lock text-white text-3xl"></i></div>' : ''}
-                        <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-orange-50 to-amber-50 flex items-center justify-center text-3xl text-orange-500 mb-3 shadow-md">
+            const createCardHTML = (service) => {
+                const isProLocked = service.pricing === 'pro' && this.userPlan !== 'pro';
+                return `
+                    <div class="service-card p-4 text-center relative card-hover cursor-pointer" onclick="window.useToolHandler(${JSON.stringify(service).replace(/"/g, '&quot;')})">
+                        ${service.pricing === 'pro' ? `<div class="absolute top-2 right-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-[9px] px-2 py-0.5 rounded-full"><i class="fas fa-crown mr-0.5"></i>प्रो</div>` : ''}
+                        <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-br from-indigo-50 to-purple-50 flex items-center justify-center text-2xl text-indigo-500 mb-3 shadow-md">
                             <i class="fas ${service.icon}"></i>
                         </div>
                         <h3 class="text-sm font-bold text-gray-800">${service.name}</h3>
                         <p class="text-[10px] text-gray-400 mt-1 hidden md:block">${service.desc}</p>
-                        ${service.pricing === 'pro' && this.userPlan !== 'pro' ? `<div class="mt-2 text-[9px] text-orange-500">💰 ₹${service.pricePerUse || 5}</div>` : '<div class="mt-2 text-[9px] text-green-500">🎁 फ्री टूल</div>'}
+                        ${isProLocked ? `<div class="mt-2 text-[10px] text-orange-500 font-semibold">💰 ₹${service.pricePerUse || 5}</div>` : '<div class="mt-2 text-[10px] text-green-500 font-semibold">🎁 फ्री टूल</div>'}
                     </div>
                 `;
-                
-                const activeServices = this.servicesData.filter(s => s.active);
-                
-                if(essentialGrid) essentialGrid.innerHTML = activeServices.filter(s => s.cat === 'essential').map(createCardHTML).join('');
-                if(toolsGrid) toolsGrid.innerHTML = activeServices.filter(s => s.cat === 'tools').map(createCardHTML).join('');
-                if(printGrid) printGrid.innerHTML = activeServices.filter(s => s.cat === 'print').map(createCardHTML).join('');
-            }
+            };
+            
+            const activeServices = this.servicesData.filter(s => s.active);
+            
+            if(essentialGrid) essentialGrid.innerHTML = activeServices.filter(s => s.cat === 'essential').map(createCardHTML).join('');
+            if(toolsGrid) toolsGrid.innerHTML = activeServices.filter(s => s.cat === 'tools').map(createCardHTML).join('');
+            if(printGrid) printGrid.innerHTML = activeServices.filter(s => s.cat === 'print').map(createCardHTML).join('');
         }
     }
-    
-    // Expose app for onclick
-    window.__app = null;
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            if(window.__app && typeof window.__app.useTool === 'function') return;
-            const appElement = document.querySelector('[x-data]');
-            if(appElement && appElement.__x) {
-                window.__app = appElement.__x.$data;
-            }
-        }, 500);
-    });
+}
+
+// Global handler for onclick from service cards
+window.useToolHandler = function(service) {
+    const appElement = document.querySelector('[x-data]');
+    if(appElement && appElement.__x) {
+        appElement.__x.$data.useTool(service);
+    } else {
+        alert('कृपया पेज रिफ्रेश करें');
+    }
+}
+
+// Initialize QR on page load
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const canvas = document.getElementById('rechargeQrCanvas');
+        if(canvas && typeof QRious !== 'undefined') {
+            const upiUrl = `upi://pay?pa=cyberhero@okhdfcbank&pn=Cyber%20Hero&am=500&cu=INR`;
+            new QRious({ element: canvas, size: 160, value: upiUrl });
+        }
+    }, 500);
+});
 </script>
 </body>
 </html>
